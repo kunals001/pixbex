@@ -26,13 +26,11 @@ const Header = () => {
         {/* Logo */}
         <Link href="/">
           <Image
-            width={1200}
-            height={800}
+            width={200}
+            height={100}
             className='md:w-[4.9vw] md:h-[2.8vw] w-[5vh]  h-[3vh] bg-cover select-none ml-[.2vh] md:ml-0'
             src="/pixbex.png"
             alt="main banner"
-            loading='eager'
-            priority
           />
         </Link>
 
