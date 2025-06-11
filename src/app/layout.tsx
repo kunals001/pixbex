@@ -1,6 +1,7 @@
 
 import type { Metadata } from "next";
 import { Barlow } from 'next/font/google';
+import { Toaster } from "react-hot-toast";
 import "./globals.css";
 import Header from "@/components/Navbar/Header";
 
@@ -34,6 +35,7 @@ export default function RootLayout({
       >
         <Header />
         {children}
+        <Toaster position="top-right"/>
       </body>
     </html>
   );

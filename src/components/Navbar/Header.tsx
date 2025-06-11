@@ -31,6 +31,8 @@ const Header = () => {
             className='md:w-[4.9vw] md:h-[2.8vw] w-[5vh]  h-[3vh] bg-cover select-none ml-[.2vh] md:ml-0'
             src="/pixbex.png"
             alt="main banner"
+            loading='eager'
+            priority
           />
         </Link>
 
@@ -46,12 +48,12 @@ const Header = () => {
 
         {/* Auth Buttons */}
         <div className="Auth flex gap-[.5vw] font-barlow font-[600] items-center">
-          <Link href="/login">
-            <AnimatedGradientTextDemo text={"Login"} className='md:text-[1.1vw]'/>
+          <Link href="/hire">
+            <AnimatedGradientTextDemo text={"Hire me"} className='md:text-[1.1vw]'/>
           </Link>
-          <Link href="/signup">
+          {/* <Link href="/signup">
             <InteractiveHoverButton className='hidden md:block border-2 border-[#78c7e4] text-zinc-900 bg-gradient-to-r from-[#93a3fc] to-[#398cff]'>Become a client</InteractiveHoverButton>
-          </Link>
+          </Link> */}
         </div>
       </div>
     </header>

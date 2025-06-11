@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { cn } from "@/lib/utils";
 import { Marquee } from '../magicui/marquee';
+import Link from 'next/link';
 
 
 const reviews = [
@@ -64,9 +65,9 @@ const ReviewCard = ({
   alt: string;
 }) => {
   return (
-    <figure
+    <Link href={"/skills"}><figure
       className={cn(
-        "relative h-full w-64 cursor-pointer overflow-hidden rounded-xl border-2 border-gray-500 p-4 hover:border-blue-600 transition-all duration-300",
+        "relative md:h-full md:w-64 h-[10vh] w-[20vh] cursor-pointer overflow-hidden rounded-xl border-2 border-gray-500 md:p-4 p-2 hover:border-blue-600 transition-all duration-300",
       )}
     >
       <div className="flex flex-row items-center gap-2 ">
@@ -78,8 +79,8 @@ const ReviewCard = ({
           <p className="text-xs font-medium dark:text-white/40">{username}</p>
         </div>
       </div>
-      <blockquote className="mt-2 text-sm">{body}</blockquote>
-    </figure>
+      <blockquote className="mt-2 md:text-sm leading-none text-xs">{body}</blockquote>
+    </figure></Link>
   );
 };
  
