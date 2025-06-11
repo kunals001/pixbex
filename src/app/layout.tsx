@@ -6,7 +6,7 @@ import {ReduxProvider} from "@/redux/provider";
 import "./globals.css";
 import Header from "@/components/Navbar/Header";
 
-// Fonts
+
 const barlow = Barlow({
   subsets: ['latin'],
   variable: '--font-barlow',
@@ -14,7 +14,7 @@ const barlow = Barlow({
 });
 
 
-// Metadata for <head>
+
 export const metadata: Metadata = {
   title: "Pixbex",
   description: "My Personal Portfolio",
