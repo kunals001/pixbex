@@ -28,8 +28,8 @@ const Page = () => {
         <input type="text" placeholder='Your Name...' className={className} required/>
         <input type="email" placeholder='Your Email...' className={className} required/>
 
-        <select className='w-full md:px-[1vw] md:py-[.5vw] px-4 py-2.5 rounded-lg outline-none text-zinc-400 md:text-[1vw] text-[1.8vh] bg-zinc-900 cursor-pointer'>
-          <option value="default" disabled selected>Reason for Contact</option>
+        <select defaultValue="default" className='w-full md:px-[1vw] md:py-[.5vw] px-4 py-2.5 rounded-lg outline-none text-zinc-400 md:text-[1vw] text-[1.8vh] bg-zinc-900 cursor-pointer'>
+          <option value="default" disabled>Reason for Contact</option>
           <option value="collaboration">Collaboration</option>
           <option value="freelance">Freelance</option>
           <option value="other">Other</option>

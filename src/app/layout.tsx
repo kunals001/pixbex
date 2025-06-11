@@ -2,6 +2,7 @@
 import type { Metadata } from "next";
 import { Barlow } from 'next/font/google';
 import { Toaster } from "react-hot-toast";
+import {ReduxProvider} from "@/redux/provider";
 import "./globals.css";
 import Header from "@/components/Navbar/Header";
 
@@ -33,9 +34,11 @@ export default function RootLayout({
         className={`${barlow.variable} antialiased`}
         cz-shortcut-listen="true"
       >
+        <ReduxProvider>
         <Header />
         {children}
         <Toaster position="top-right"/>
+        </ReduxProvider>
       </body>
     </html>
   );
