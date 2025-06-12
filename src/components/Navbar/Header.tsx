@@ -51,9 +51,7 @@ const Header = () => {
           <Link href="/hire">
             <AnimatedGradientTextDemo text={"Hire me"} className='md:text-[1.1vw]'/>
           </Link>
-          {/* <Link href="/signup">
-            <InteractiveHoverButton className='hidden md:block border-2 border-[#78c7e4] text-zinc-900 bg-gradient-to-r from-[#93a3fc] to-[#398cff]'>Become a client</InteractiveHoverButton>
-          </Link> */}
+          
         </div>
       </div>
     </header>

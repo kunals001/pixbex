@@ -1,6 +1,7 @@
 
 import type { Metadata } from "next";
 import { Barlow } from 'next/font/google';
+import {Poppins} from 'next/font/google'
 import { Toaster } from "react-hot-toast";
 import {ReduxProvider} from "@/redux/provider";
 import "./globals.css";
@@ -10,6 +11,12 @@ import Header from "@/components/Navbar/Header";
 const barlow = Barlow({
   subsets: ['latin'],
   variable: '--font-barlow',
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+});
+
+const poppins = Poppins({
+  subsets: ['latin'],
+  variable: '--font-poppins',
   weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
 });
 
@@ -31,7 +38,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${barlow.variable} antialiased`}
+        className={`${barlow.variable} ${poppins.variable} antialiased`}
         cz-shortcut-listen="true"
       >
         <ReduxProvider>
