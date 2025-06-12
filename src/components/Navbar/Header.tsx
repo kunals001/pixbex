@@ -1,9 +1,10 @@
-
+"use client"
 import Link from 'next/link'
 import React from 'react'
 import Image from 'next/image'
-import { InteractiveHoverButton } from "@/components/magicui/interactive-hover-button";
+import { useAppSelector } from '@/redux/hooks';
 import { AnimatedGradientTextDemo} from "../Layouts/ButtonShine";
+import { InteractiveHoverButton } from '../magicui/interactive-hover-button';
 
 
 
@@ -18,6 +19,8 @@ const Header = () => {
   const navItemClass = "btnClass text-[1.4vh] px-[.2vh]  py-[.2vh] md:text-[1.1vw] md:px-[.4vw] md:py-[.2vw] rounded-full md:rounded-[.1vw] overflow-hidden relative inline-block hover:cursor-pointer ";
   const underlineClass = "underClass hidden md:block under-1 w-full md:h-[.3vh] h-[.5vw] bg-[#E8F9FF]";
   const fontClass = "font-barlow px-[.3vh] md:px-0";
+
+  const {user} = useAppSelector((state) => state.admin);
 
   return (
     <header className='sticky top-0 z-20 w-full md:h-[5vw] h-[6vh]  bg-transparent flex items-center justify-center'>
@@ -48,9 +51,22 @@ const Header = () => {
 
         {/* Auth Buttons */}
         <div className="Auth flex gap-[.5vw] font-barlow font-[600] items-center">
-          <Link href="/hire">
+          {user?.isAdmin ? (
+            null
+          ) : (
+            <Link href="/hire">
             <AnimatedGradientTextDemo text={"Hire me"} className='md:text-[1.1vw]'/>
-          </Link>
+           </Link>
+          )}
+          
+
+          {user && user.isAdmin ? (
+            <Link href="/dashboard" className='hidden md:block'>
+              <InteractiveHoverButton className='bg-gradient-to-r from-purple-500 border-none to-blue-500 text-[1vw] text-zinc-200 px-[1vw] py-[.5vw]'>Dashboard</InteractiveHoverButton>
+            </Link>
+          ) : (
+            null
+          )}
           
         </div>
       </div>

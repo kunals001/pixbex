@@ -1,14 +1,34 @@
 "use client"
 import { TextAnimate } from '@/components/magicui/text-animate'
-import React from 'react'
+import { useAppDispatch, useAppSelector } from '@/redux/hooks'
+import {contactus} from '@/redux/slice/adminSlice'
+import { useState } from 'react'
+import toast from 'react-hot-toast'
 
 const Page = () => {
+  const [name, setName] = useState("")
+  const [email, setEmail] = useState("")
+  const [message, setMessage] = useState("")
+  const [reason, setReason] = useState("")
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const dispatch = useAppDispatch()
+  const { loading, error} = useAppSelector((state) => state.admin);
+
+  const handleSubmit = async(e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    if (!name || !email || !message || !reason || reason === "default") {
+    toast.error("Please fill all fields including a valid reason");
+    return;
+    }
+
     try {
-      
+      await dispatch(contactus({ name, email, message, reason })).unwrap();
+      toast.success("Message sent successful");
+      setName("");
+      setEmail("");
+      setMessage("");
+      setReason("");
     } catch (error) {
       console.log(error)
     }
@@ -25,23 +45,26 @@ const Page = () => {
       </div>
 
       <form onSubmit={handleSubmit} className='md:w-[40vw] w-full flex flex-col gap-3'>
-        <input type="text" placeholder='Your Name...' className={className} required/>
-        <input type="email" placeholder='Your Email...' className={className} required/>
+        <input value={name} onChange={(e) => setName(e.target.value)} type="text" placeholder='Your Name...' className={className} required/>
+        <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder='Your Email...' className={className} required/>
 
-        <select defaultValue="default" className='w-full md:px-[1vw] md:py-[.5vw] px-4 py-2.5 rounded-lg outline-none text-zinc-400 md:text-[1vw] text-[1.8vh] bg-zinc-900 cursor-pointer'>
+        <select value={reason} onChange={(e) => setReason(e.target.value)} className='w-full md:px-[1vw] md:py-[.5vw] px-4 py-2.5 rounded-lg outline-none text-zinc-400 md:text-[1vw] text-[1.8vh] bg-zinc-900 cursor-pointer'>
           <option value="default" disabled>Reason for Contact</option>
           <option value="collaboration">Collaboration</option>
           <option value="freelance">Freelance</option>
           <option value="other">Other</option>
         </select>
 
-        <textarea placeholder='Your Message...' className="w-full md:px-[1vw] md:py-[.5vw] px-4 py-2.5 rounded-lg outline-none placeholder:text-zinc-400 placeholder:text-[1.8vh] placeholder:md:text-[1vw] text-zinc-100 md:text-[1vw] text-[1.8vh] bg-zinc-900 resize-none md:h-[20vw] h-[30vh]" required/>
+        <textarea value={message} onChange={(e) => setMessage(e.target.value)} placeholder='Your Message...' className="w-full md:px-[1vw] md:py-[.5vw] px-4 py-2.5 rounded-lg outline-none placeholder:text-zinc-400 placeholder:text-[1.8vh] placeholder:md:text-[1vw] text-zinc-100 md:text-[1vw] text-[1.8vh] bg-zinc-900 resize-none md:h-[20vw] h-[30vh]" required/>
+
+        {error && <p className='text-red-500 text-[1.8vh] md:text-[1vw]'>{error}</p>}
 
         <button
           type="submit"
+          disabled={loading}
           className="md:text-[1vw] text-[1.8vh] md:px-[1.5vw] px-4 py-2.5 md:py-[.5vw] rounded-lg text-zinc-200 cursor-pointer bg-gradient-to-r from-purple-500 to-blue-500 hover:from-blue-500 hover:to-purple-500 transition-all duration-300 ease-in-out font-semibold"
         >
-          Send Message
+          {loading ? "Sending..." : "Send Message"}
         </button>
       </form>
 

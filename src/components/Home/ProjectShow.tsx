@@ -18,7 +18,7 @@ const ProjectShow = () => {
            </div>
         </div>
 
-        <div className="md:w-1/2 w-full flex flex-col md:gap-[1.5vw] gap-[2vh]">
+        <div className="md:w-[50vw] w-full flex flex-col md:gap-[1.5vw] gap-[2vh]">
            <div className="w-full p-3 rounded-2xl bg-zinc-900">
                 <MainVideoHoverPlay videoUrl="https://ik.imagekit.io/tzq13ojas/5223113-hd_3840_2160_30fps.mp4?updatedAt=1749729348551" link="/signup" bubbleText="Show Skills" Icon={TrendingUp}/>
 
