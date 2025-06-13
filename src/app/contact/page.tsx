@@ -23,7 +23,9 @@ const Page = () => {
     }
 
     try {
-      await dispatch(contactus({ name, email, message, reason })).unwrap();
+      await dispatch(contactus({
+        name, email, message, reason,
+      })).unwrap();
       toast.success("Message sent successful");
       setName("");
       setEmail("");
@@ -41,7 +43,7 @@ const Page = () => {
       <div className="w-full h-[10vh] flex flex-col gap-2 items-center justify-center">
         <TextAnimate animation="slideLeft" by="character" className='md:text-[3vw] text-[3.5vh] text-zinc-100 font-[600] leading-none tracking-tighter'>Let's Connect</TextAnimate>
 
-        <TextAnimate animation="blurIn" as="p" by="word" className='md:text-[1.5vw] text-[2vh] text-zinc-300 font-[400] leading-none tracking-tighter text-center md:w-[35vw]'>Feel free to reach out for collaborations, freelance projects, or just a friendly hello!</TextAnimate>
+        <TextAnimate animation="blurIn" as="p" by="word" className='md:text-[1.3vw] text-[2vh] text-zinc-300 font-[400] leading-none tracking-tighter text-center md:w-[35vw]'>Feel free to reach out for collaborations, freelance projects, or just a friendly hello!</TextAnimate>
       </div>
 
       <form onSubmit={handleSubmit} className='md:w-[40vw] w-full flex flex-col gap-3'>

@@ -87,7 +87,7 @@ export const checkAdminAuth = createAsyncThunk(
 
 export const contactus = createAsyncThunk<
   Contact,
-  Contact,
+  { name: string; email: string; message: string; reason: string },
   { rejectValue: ErrorPayload }
 >("admin/contactus", async (data, { rejectWithValue }) => {
   try {

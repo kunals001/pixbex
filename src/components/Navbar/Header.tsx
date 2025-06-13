@@ -61,7 +61,7 @@ const Header = () => {
           
 
           {user && user.isAdmin ? (
-            <Link href="/dashboard" className='hidden md:block'>
+            <Link href="/dashboard/?tab=contact" className='hidden md:block'>
               <InteractiveHoverButton className='bg-gradient-to-r from-purple-500 border-none to-blue-500 text-[1vw] text-zinc-200 px-[1vw] py-[.5vw]'>Dashboard</InteractiveHoverButton>
             </Link>
           ) : (
