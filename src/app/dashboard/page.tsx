@@ -5,6 +5,7 @@ import SideBar from '@/components/Layouts/SideBar';
 import { useSearchParams } from 'next/navigation';
 import Contact from '@/components/Layouts/Contact';
 import AddPost from '@/components/Layouts/AddPost';
+import GetPosts from '@/components/Layouts/GetPosts';
 
 const Page = () => {
 
@@ -37,6 +38,7 @@ const Page = () => {
       <div className="w-[60vw]">
         {tab === "contact" && <Contact/>}
         {tab === "add-post" && <AddPost/>}
+        {tab === "posts" && <GetPosts/>}
       </div>
 
     </div>

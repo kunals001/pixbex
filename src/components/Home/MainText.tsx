@@ -4,7 +4,7 @@ import { TextAnimate } from "@/components/magicui/text-animate";
 
 const MainText = () => {
   return (
-    <div className="relative w-full  flex flex-col md:pt-[8vw] pt-[15vh]">
+    <div className="relative w-full px-[1vh] md:px-[calc(100%-84vw)] flex flex-col md:pt-[8vw] pt-[15vh]">
 
     <div className="flex justify-center ">
 

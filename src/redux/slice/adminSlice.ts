@@ -73,6 +73,18 @@ export const login = createAsyncThunk<
   }
 });
 
+export const checkAdminAuth = createAsyncThunk(
+  'admin/checkAdminAuth',
+  async (_, { rejectWithValue }) => {
+    try {
+      const response = await axios.get(`${API_URL}/api/auth/check-auth`);
+      return response.data.user;
+    } catch (err: any) {
+      return rejectWithValue(err.response?.data?.message || "Something went wrong");
+    }
+  }
+);
+
 export const contactus = createAsyncThunk<
   Contact,
   Contact,
@@ -114,6 +126,35 @@ export const getAllContact = createAsyncThunk<
     return rejectWithValue(error.response?.data?.message || "Get all contact failed");
   }
 });
+
+export const getAllPosts = createAsyncThunk<
+  Post[],
+  void,
+  { rejectValue: string }
+>("admin/getAllPosts", async (_, { rejectWithValue }) => {
+  try {
+    const response = await axios.get(`${API_URL}/api/post/get-all-post`);
+    return response.data.posts;
+  } catch (err) {
+    const error = err as AxiosError<{ message: string }>;
+    return rejectWithValue(error.response?.data?.message || "Failed to fetch posts");
+  }
+});
+
+export const updatePost = createAsyncThunk<
+  Post,
+  { postId: string; updateData: Partial<Post> },
+  { rejectValue: string }
+>("admin/updatePost", async ({ postId, updateData }, { rejectWithValue }) => {
+  try {
+    const response = await axios.put(`${API_URL}/api/post/update-post/${postId}`, updateData);
+    return response.data.updatedPost;
+  } catch (err) {
+    const error = err as AxiosError<{ message: string }>;
+    return rejectWithValue(error.response?.data?.message || "Failed to update post");
+  }
+});
+
 
 export const deleteContact = createAsyncThunk<
   void,
@@ -196,7 +237,53 @@ const adminSlice = createSlice({
       .addCase(getAllContact.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload || "Get all contact failed";
-      });
+      })
+      .addCase(getAllPosts.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(getAllPosts.fulfilled, (state, action) => {
+        state.loading = false;
+        state.posts = action.payload;
+      })
+      .addCase(getAllPosts.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload || "Failed to fetch posts";
+      })
+      .addCase(updatePost.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(updatePost.fulfilled, (state, action) => {
+        state.loading = false;
+        const updatedPost = action.payload;
+        state.posts = state.posts.map(post =>
+          post._id === updatedPost._id ? updatedPost : post
+        );
+      })
+      .addCase(updatePost.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload || "Failed to update post";
+      })
+      .addCase(checkAdminAuth.pending, (state) => {
+        state.loading = true;
+        state.isCheckingAuth = true;
+        state.error = null;
+      })
+      .addCase(checkAdminAuth.fulfilled, (state, action) => {
+        state.loading = false;
+        state.user = action.payload;
+        state.isCheckingAuth = false;
+        state.error = null;
+      })
+      .addCase(checkAdminAuth.rejected, (state, action) => {
+        state.loading = false;
+        state.user = null;
+        state.isCheckingAuth = false;
+        state.error = action.payload as string;
+      })
+
+
   },
 });
 

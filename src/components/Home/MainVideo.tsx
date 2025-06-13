@@ -16,8 +16,9 @@ const MainVideo = () => {
   };
 
   return (
+    <div className=" px-[1vh] md:px-[calc(100%-84vw)]">
     <div
-      className="group w-full md:h-[38vw] h-[28vh] rounded-2xl overflow-hidden md:mt-[7vw] mt-[7vh] cursor-pointer relative "
+      className="group w-full md:h-[38vw] h-[28vh] rounded-2xl overflow-hidden md:mt-[7vw] mt-[7vh] cursor-pointer relative px-[1vh] md:px-[calc(100%-84vw)]"
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setHovering(true)}
       onMouseLeave={() => setHovering(false)}
@@ -41,7 +42,7 @@ const MainVideo = () => {
         playsInline
         preload="auto"
       />
-    </div>
+    </div></div>
   );
 };
 

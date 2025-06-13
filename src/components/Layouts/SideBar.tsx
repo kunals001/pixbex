@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
 import SideButton from './SideButton'
-import { IconGauge ,IconGaugeFilled,IconLayoutList, IconLayoutListFilled,IconCopyPlus,IconCopyPlusFilled} from '@tabler/icons-react';
+import { IconGauge ,IconGaugeFilled,IconLayoutList, IconLayoutListFilled,IconCopyPlus,IconCopyPlusFilled, IconPaperclip} from '@tabler/icons-react';
 
 
 const tabs = [
     { text: "Contacts", href: "/dashboard/?tab=contact",Icon:IconGauge,SelectIcon:IconGaugeFilled },
     { text: "Add Post", href: "/dashboard/?tab=add-post",Icon:IconLayoutList,SelectIcon:IconLayoutListFilled },
     { text: "Hires", href: "/dashboard/?tab=hires" ,Icon:IconCopyPlus,SelectIcon:IconCopyPlusFilled},
+    { text: "All Post", href: "/dashboard/?tab=posts" ,Icon:IconPaperclip,SelectIcon:IconPaperclip},
 ]
 
 const Sidebar = () => {
