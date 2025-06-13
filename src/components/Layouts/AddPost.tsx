@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import Editor from "./Editor";
 import Upload from "./Upload";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { createPost } from "@/redux/slice/adminSlice";
@@ -90,10 +89,7 @@ const AddPost = () => {
         
         </div>
 
-        <label htmlFor="tech" className="md:text-[1.2vw] text-zinc-500">
-          Write about the Technologies used
-        </label>
-        <Editor value={tech} onChange={setTech} />
+        <input type="text" placeholder="Enter Website Link" value={tech} onChange={(e) => setTech(e.target.value)} className={className} />
 
         <button
           type="submit"

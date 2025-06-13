@@ -48,7 +48,7 @@ const HoverPlayVideo: React.FC<HoverPlayVideoProps> = ({
     >
       <Link href={link}>
         <div
-          className="absolute w-[7vw] h-[7vw] rounded-full pointer-events-none transition-transform duration-300 ease-out bg-gradient-to-r from-purple-500 to-blue-500 flex flex-col leading-none gap-0 items-center justify-center text-[1.2vw] font-[500] pb-8 z-20"
+          className="absolute w-[7vw] h-[7vw] rounded-full pointer-events-none transition-transform duration-300 ease-out bg-gradient-to-r from-sky-300 to-blue-500 flex flex-col leading-none gap-0 items-center justify-center md:text-[1vw] font-[500] pb-8 z-20"
           style={{
             transform: `translate(${pos.x - 32}px, ${pos.y - 32}px) scale(${hovering ? 1 : 0})`,
           }}

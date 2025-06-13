@@ -2,7 +2,6 @@
 
 import React, { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
-import Editor from "@/components/Layouts/Editor";
 import Upload from "@/components/Layouts/Upload";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { updatePost } from "@/redux/slice/adminSlice";
@@ -126,10 +125,7 @@ const UpdatePost = () => {
             </div>
           </div>
 
-          <label htmlFor="tech" className="md:text-[1.2vw] text-zinc-500">
-            Write about the Technologies used
-          </label>
-          <Editor value={tech} onChange={setTech} />
+          <input type="text" value={tech} onChange={(e) => setTech(e.target.value)} className={className} />
 
           <button
             type="submit"
