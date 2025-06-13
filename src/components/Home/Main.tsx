@@ -5,6 +5,7 @@ import TextAnimation from './TextAnimation'
 import ProjectShow from './ProjectShow'
 import FastBuild from './FastBuild'
 import TextMarquee from './TextMarquee'
+import Faq from './Faq'
 
 
 const Main = () => {
@@ -16,6 +17,7 @@ const Main = () => {
         <TextAnimation/>
         <ProjectShow/>
         <TextMarquee/>
+        <Faq/>
     </div>
   )
 }

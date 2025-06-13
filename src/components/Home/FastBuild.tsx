@@ -15,8 +15,7 @@ const FastBuild = () => {
 
       <div className="w-full grid md:grid-cols-3 grid-cols-2 md:gap-3 gap-2 md:mt-[3vw] mt-[2vh]">
         <FastCard
-         num="1"
-
+          num="1"
           text="Next js"
           href="/next.js.svg"
           desc="The React framework for production"
@@ -24,7 +23,6 @@ const FastBuild = () => {
 
         <FastCard
           num="2"
-
           text="Node js"
           href="/nodejs.svg"
           desc="Event-driven, non-blocking I/O runtime"
@@ -32,31 +30,27 @@ const FastBuild = () => {
 
         <FastCard
           num="3"
-          
-          text="Node js"
-          href="/nodejs.svg"
+          text="MongoDB"
+          href="/mongodb.svg"
           desc="Event-driven, non-blocking I/O runtime"
         />
 
         <FastCard
-          num="4"
-          
+          num="4"        
           text="React js"
           href="/react-native.svg"
           desc="Event-driven, non-blocking I/O runtime"
         />
 
         <FastCard
-          num="5"
-          
+          num="5"         
           text="Typescript"
           href="/typescript.svg"
           desc="Event-driven, non-blocking I/O runtime"
         />
 
         <FastCard
-          num="6"
-          
+          num="6"         
           text="Express js"
           href="/express-js.svg"
           desc="Event-driven, non-blocking I/O runtime"
