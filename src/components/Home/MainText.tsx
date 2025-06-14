@@ -1,30 +1,61 @@
-import React from 'react'
-import { AuroraText } from "@/components/magicui/aurora-text";
-import { TextAnimate } from "@/components/magicui/text-animate";
+'use client';
+
+import React, { useEffect, useState } from 'react';
+import { motion } from 'motion/react';
+import Image from 'next/image';
+
+const MotionImage = motion(Image);
+
+// ✅ Custom hook to detect if screen is mobile
+const useIsMobile = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkSize = () => setIsMobile(window.innerWidth < 768);
+    checkSize(); // initial check
+    window.addEventListener('resize', checkSize);
+    return () => window.removeEventListener('resize', checkSize);
+  }, []);
+
+  return isMobile;
+};
 
 const MainText = () => {
+  const isMobile = useIsMobile();
+
   return (
-    <div className="relative w-full px-[1vh] md:px-[calc(100%-84vw)] flex flex-col md:pt-[8vw] pt-[15vh]">
-
-    <div className="flex justify-center ">
-
-        {/* Main Heading */}
-      <h1 className="relative z-10 text-[3vh] font-[700] md:text-[4.5vw] md:leading-[4.5vw] leading-[3vh] text-center tracking-tight select-none text-white">
-        Crafting Dynamic and Immersive <br />
-        Web Experiences at <AuroraText>Pixbex</AuroraText>
-      </h1>
-      
-      {/* Glowing background behind the h1 */}
-      <div className="absolute w-[100%] max-w-[900px] md:h-[40%] h-[20%] bg-[#066CF1] opacity-20 blur-[100px] rounded-full z-0" />
+    <div className="relative w-full px-[1vh] md:px-[calc(100%-84vw)] flex flex-col md:pt-[8vw] pt-[10vh]">
+      <div className="textstructer">
+        {["Building", "Seamless", "Web Experiences"].map((item, index) => {
+          return (
+            <div key={index} className="markers">
+              <div className="w-fit flex items-center">
+                {index === 1 && (
+                  <MotionImage
+                    initial={{ width: 0, opacity: 0 }}
+                    animate={{
+                      width: isMobile ? "7vh" : "8vw",
+                      opacity: 1
+                    }}
+                    transition={{ ease: [0.76, 0, 0.24, 1], duration: 1 }}
+                    src="/Pixbex.png"
+                    alt="Eye"
+                    width={400}
+                    height={400}
+                    priority
+                    className="md:w-[8vw] md:h-[4.5vw] w-[7vh] h-[3.8vh] mr-[0.5vw] relative md:top-[.1vw] rounded-md object-cover"
+                  />
+                )}
+                <h1 className="uppercase md:text-[5vw] text-[4vh] leading-[3.6vh] md:leading-[4.5vw] tracking-tighter font-poppins font-bold">
+                  {item}
+                </h1>
+              </div>
+            </div>
+          );
+        })}
+      </div>
     </div>
+  );
+};
 
-    <div className="mx-auto text-center mt-[1.5vh] md:mt-[2vw]">
-      <TextAnimate animation="blurInUp" by="character" className='mx-auto text-[1.2vh] md:text-[1.5vw] leading-none'>We build fast, modern, and SEO-friendly websites using the latest </TextAnimate>
-      <TextAnimate animation="blurInUp" by="word" className='mx-auto text-[1.3vh] md:text-[1.5vw] leading-none'>technologies to deliver top-quality, performance-driven digital experiences.</TextAnimate>
-    </div>
-      
-    </div>
-  )
-}
-
-export default MainText
+export default MainText;

@@ -7,7 +7,8 @@ import MainVideoHoverPlay from './MainVideoHoverPlay'
 import { TrendingUp } from 'lucide-react'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 import { getAllPosts } from '@/redux/slice/adminSlice'
-import { IconArrowRight } from '@tabler/icons-react';
+import Card from '@/components/Hire/Card';
+import { ShinyButton } from '../magicui/shiny-button'
 
 const ProjectShow = () => {
     const dispatch = useAppDispatch()
@@ -35,17 +36,17 @@ const ProjectShow = () => {
 
                     <div className="md:w-[50vw] w-full flex flex-col md:gap-[1.5vw] gap-[2vh] ">
                         {posts.map((post) => (
-                            <div key={post._id} className="w-full p-3 rounded-2xl bg-zinc-900">
+                            <div key={post._id} className="md:shadow-md shadow-blue-900 rounded-2xl">
+                                <Card className="w-full p-3 rounded-2xl bg-zinc-900">
                                 <MainVideoHoverPlay videoUrl={post.video} link="/skills" bubbleText="More Project" Icon={TrendingUp} />
                                 <div className="">
                                     <h1 className='md:text-[1.5vw] text-[1.9vh] font-[700] tracking-tighter md:px-3 md:py-1 px-2 py-1 bg-zinc-900 rounded-md '>{post.title}</h1>
                                     <p className='md:text-[1vw] text-[1.6vh] font-poppins font-[400] tracking-tighter md:px-3 md:py-1 px-2 py-1 md:leading-5.5 leading-3.5 font-italic text-zinc-400'>{post.desc}</p>
                                     <Link href={`${post.tech}`}>
-                                    <div className="group md:mt-2 mt-1 md:px-[1vw] md:py-[.5vw] px-[1vh] py-[1vh] rounded-full md:text-[1vw] text-[1.6vh] font-poppins font-[500] font-italic text-zinc-200 md:bg-zinc-800 bg-blue-400 border-2 border-zinc-500 hover:bg-gradient-to-l from-sky-400 to-purple-500 hover:shadow-lg transition-all duration-500 ease-in-out flex gap-2 items-center justify-center text-center cursor-pointer">
-                                        Show Project  <IconArrowRight stroke={2} className='md:size-[1.3vw] size-[2.3vh] -rotate-45'/>
-                                    </div>
+                                       <ShinyButton className='py-[.4vh] mt-4 md:px-[2.5vw] md:py-[.3vw] border-none bg-gradient-to-l from-purple-500 to-blue-500 w-full'>Show Project</ShinyButton>
                                     </Link>
                                 </div>
+                                </Card>
                             </div>
                         ))}
                     </div>

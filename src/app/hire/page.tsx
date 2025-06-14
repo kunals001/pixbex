@@ -9,8 +9,10 @@ import { BentoDemo } from "@/components/Hire/Offer";
 import WorkFlow from "@/components/Hire/WorkFlow";
 import Projects from "@/components/Hire/Projects";
 import HireForm from "@/components/Hire/HireForm";
+import { useLenis } from '@/components/Layouts/UseLenis'
 
 const Page = () => {
+  useLenis();
   const [open, setOpen] = useState(false);
 
   return (
