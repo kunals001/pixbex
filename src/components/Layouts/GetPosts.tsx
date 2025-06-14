@@ -45,7 +45,7 @@ const Customers = () => {
             </TableHeader>
 
             {posts.map((con,index)=>(
-              <TableBody key={con?._id} className=' bg-zinc-900 transition-all duration-300 ease-in-out text-zinc-200'>
+              <TableBody key={con?._id} className=' bg-zinc-900 transition-all duration-300 ease-in-out text-zinc-200 '>
                 <TableRow>
 
                   <TableCell className='md:text-[1vw] font-semibold hover:underline cursor-pointer'>
@@ -56,8 +56,13 @@ const Customers = () => {
                     {con?.title}
                   </TableCell>
 
-                  <TableCell className='md:text-[1vw] font-[500] hover:underline cursor-pointer'>
+                  <TableCell className='md:text-[1vw] font-[500] hover:underline cursor-pointer relative group'>
                     {con?.desc.slice(0,20) + "..."}
+
+                    {/* Tooltip */}
+                    <div className="absolute left-1/2 top-0 mt-2 w-max max-w-[300px] -translate-x-1/2 scale-0 group-hover:scale-100 transition-transform bg-zinc-800 text-white text-sm rounded-lg px-4 py-2 shadow-lg z-50 break-words whitespace-pre-wrap">
+                      {con?.desc}
+                    </div>
                   </TableCell>
 
                    <TableCell className='md:text-[1vw] font-[500] hover:underline cursor-pointer leading-none'>

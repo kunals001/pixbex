@@ -366,7 +366,6 @@ const adminSlice = createSlice({
       .addCase(sendHireRequest.fulfilled, (state, action) => {
         state.loading = false;
         state.error = null;
-        state.hireRequests.push(action.payload); // append new request
       })
       .addCase(sendHireRequest.rejected, (state, action) => {
         state.loading = false;

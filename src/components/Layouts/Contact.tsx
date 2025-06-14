@@ -68,8 +68,12 @@ const Customers = () => {
                     {con?.email}
                   </TableCell>
 
-                   <TableCell className='md:text-[1vw] font-[500] hover:underline cursor-pointer leading-none'>
+                   <TableCell className='md:text-[1vw] font-[500] hover:underline cursor-pointer leading-none relative group'>
                     {con?.message.slice(0,20) + "..."}
+                    {/* Tooltip */}
+                    <div className="absolute left-1/2 top-0 mt-2 w-max max-w-[300px] -translate-x-1/2 scale-0 group-hover:scale-100 transition-transform bg-zinc-800 text-white text-sm rounded-lg px-4 py-2 shadow-lg z-50 break-words whitespace-pre-wrap">
+                      {con?.message}
+                    </div>
                   </TableCell>
 
                   <TableCell className='md:text-[1vw] font-[500] hover:underline cursor-pointer'>

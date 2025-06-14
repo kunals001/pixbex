@@ -6,6 +6,7 @@ import { useSearchParams } from 'next/navigation';
 import Contact from '@/components/Layouts/Contact';
 import AddPost from '@/components/Layouts/AddPost';
 import GetPosts from '@/components/Layouts/GetPosts';
+import Hire from '@/components/Layouts/Hire';
 
 const Page = () => {
 
@@ -39,6 +40,7 @@ const Page = () => {
         {tab === "contact" && <Contact/>}
         {tab === "add-post" && <AddPost/>}
         {tab === "posts" && <GetPosts/>}
+        {tab === "hires" && <Hire/>}
       </div>
 
     </div>
