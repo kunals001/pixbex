@@ -35,12 +35,30 @@ export type Contact = {
   updatedAt: string;
 };
 
+export type Hire = {
+  _id: string;
+  name: string;
+  email: string;
+  phone?: string;
+  projectType: string;
+  description: string;
+  referenceWebsite?: string;
+  pages?: number;
+  deadline?: string;
+  budget?: string;
+  preferredCommunication?: string;
+  message?: string;
+  createdAt: string;
+  updatedAt: string;
+};
+
 type ErrorPayload = string;
 
 interface AdminState {
   user: User | null;
   contact: Contact[] | null;
   posts: Post[];
+  hireRequests: Hire[],
   loading: boolean;
   isAuthenticated: boolean;
   isCheckingAuth: boolean;
@@ -51,6 +69,7 @@ const initialState: AdminState = {
   user: null,
   contact: [],
   posts: [],
+  hireRequests: [],
   loading: false,
   isAuthenticated: false,
   isCheckingAuth: false,
@@ -169,6 +188,64 @@ export const deleteContact = createAsyncThunk<
   }
 });
 
+
+export const sendHireRequest = createAsyncThunk<
+  Hire,
+  {
+    name: string;
+    email: string;
+    phone?: string;
+    projectType: string;
+    description: string;
+    referenceWebsite?: string;
+    pages?: string;
+    deadline?: string;
+    budget?: string;
+    preferredCommunication?: string;
+    message?: string;
+  },
+  { rejectValue: string }
+>("admin/sendHireRequest", async (data, { rejectWithValue }) => {
+  try {
+    const response = await axios.post(`${API_URL}/api/hire/send-hire`, data);
+    return response.data.hire;
+  } catch (err) {
+    const error = err as AxiosError<{ message: string }>;
+    return rejectWithValue(error.response?.data?.message || "Failed to send hire request");
+  }
+});
+
+export const getAllHireRequests = createAsyncThunk<
+  Hire[],
+  void,
+  { rejectValue: string }
+>("admin/getAllHireRequests", async (_, { rejectWithValue }) => {
+  try {
+    const response = await axios.get(`${API_URL}/api/hire/get-all-hire`);
+    return response.data.hires;
+  } catch (err) {
+    const error = err as AxiosError<{ message: string }>;
+    return rejectWithValue(error.response?.data?.message || "Failed to fetch hire requests");
+  }
+});
+
+export const deleteHireRequest = createAsyncThunk<
+  string, // returning deleted ID
+  string, // input: ID
+  { rejectValue: string }
+>("admin/deleteHireRequest", async (id, { rejectWithValue }) => {
+  try {
+    await axios.delete(`${API_URL}/api/hire/delete-hire/${id}`);
+    return id; 
+  } catch (err) {
+    const error = err as AxiosError<{ message: string }>;
+    return rejectWithValue(error.response?.data?.message || "Failed to delete hire request");
+  }
+});
+
+
+
+
 // === SLICE ===
 
 const adminSlice = createSlice({
@@ -213,18 +290,18 @@ const adminSlice = createSlice({
       })
 
       .addCase(createPost.pending, (state) => {
-      state.loading = true;
-      state.error = null;
-    })
-    .addCase(createPost.fulfilled, (state, action) => {
-      state.loading = false;
-      state.error = null;
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(createPost.fulfilled, (state, action) => {
+        state.loading = false;
+        state.error = null;
       // Optional: add new post to state.posts if needed
-    })
-    .addCase(createPost.rejected, (state, action) => {
-      state.loading = false;
-      state.error = action.payload || "Something went wrong";
-    })
+      })
+      .addCase(createPost.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload || "Something went wrong";
+      })
 
       .addCase(getAllContact.pending, (state) => {
         state.loading = true;
@@ -282,6 +359,45 @@ const adminSlice = createSlice({
         state.isCheckingAuth = false;
         state.error = action.payload as string;
       })
+      .addCase(sendHireRequest.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(sendHireRequest.fulfilled, (state, action) => {
+        state.loading = false;
+        state.error = null;
+        state.hireRequests.push(action.payload); // append new request
+      })
+      .addCase(sendHireRequest.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload || "Failed to send hire request";
+      })
+      .addCase(getAllHireRequests.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(getAllHireRequests.fulfilled, (state, action) => {
+        state.loading = false;
+        state.hireRequests = action.payload;
+      })
+      .addCase(getAllHireRequests.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload || "Failed to fetch hire requests";
+      })
+      .addCase(deleteHireRequest.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(deleteHireRequest.fulfilled, (state, action) => {
+        state.loading = false;
+        state.hireRequests = state.hireRequests.filter(hire => hire._id !== action.payload);
+      })
+      .addCase(deleteHireRequest.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload || "Failed to delete hire request";
+      })
+
+
 
 
   },
