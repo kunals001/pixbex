@@ -15,41 +15,47 @@ const FastBuild = () => {
 
       <div className="w-full grid md:grid-cols-3 grid-cols-2 md:gap-3 gap-2 md:mt-[3vw] mt-[2vh]">
         <FastCard
+          className="w-[4vh] h-[4vh] md:w-[4.3vw] md:h-[4.3vw] md:ml-0 ml-2"
           num="1"
           text="Next js"
-          href="/next.js.svg"
+          href="/fast/next.js-min.png"
           desc="The React framework for production"
         />
 
         <FastCard
+          className="w-[4vh] h-[4.3vh] md:w-[4vw] md:h-[4.3vw] md:ml-0 ml-2"
           num="2"
           text="Node js"
-          href="/nodejs.svg"
+          href="/fast/nodejs-min.png"
           desc="Event-driven, non-blocking I/O runtime"
         />
 
         <FastCard
+          className="w-[2.5vh] h-[4vh] md:w-[2vw] md:h-[4.3vw] md:ml-0 ml-2"
           num="3"
           text="MongoDB"
-          href="/mongodb.svg"
+          href="/fast/mongodb-min.png"
           desc="Event-driven, non-blocking I/O runtime"
         />
 
         <FastCard
+          className="w-[4.5vh] h-[4vh] md:w-[4.5vw] md:h-[4vw] md:ml-0 ml-2"
           num="4"        
           text="React js"
-          href="/react-native.svg"
+          href="/fast/react-min.png"
           desc="Event-driven, non-blocking I/O runtime"
         />
 
         <FastCard
+          className="w-[4vh] h-[4vh] md:w-[4vw] md:h-[4vw] md:ml-0 ml-2"
           num="5"         
           text="Typescript"
-          href="/typescript.svg"
+          href="/fast/ts-min.png"
           desc="Event-driven, non-blocking I/O runtime"
         />
 
         <FastCard
+          className="w-[4vh] h-[4vh] md:w-[4vw] md:h-[4vw] md:ml-0 ml-2"
           num="6"         
           text="Express js"
           href="/express-js.svg"

@@ -24,7 +24,7 @@ const Header = () => {
 
   return (
     <header className='sticky top-0 z-20 w-full md:h-[5vw] h-[6vh]  bg-transparent flex items-center justify-center'>
-      <div className="nav absolute md:w-[70vw] w-[90vw] rounded-full md:h-[4vw] h-[5vh] bg-[rgba(196,217,255,.1)] border-[.3vh] backdrop-blur-md border-[#C4D9FF] flex items-center justify-between px-[1vw] py-[.5vw]">
+      <div className="nav absolute md:w-[70vw] w-[96vw] rounded-full md:h-[4vw] h-[5vh] bg-[rgba(196,217,255,.1)] border-[.3vh] backdrop-blur-md border-[#C4D9FF] flex items-center justify-between px-[1vw] py-[.5vw]">
         
         {/* Logo */}
         <Link href="/">
