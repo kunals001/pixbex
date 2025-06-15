@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'motion/react';
 import Image from 'next/image';
+import { SpinningText } from "@/components/magicui/spinning-text";
 
 const MotionImage = motion(Image);
 
@@ -24,7 +25,7 @@ const MainText = () => {
   const isMobile = useIsMobile();
 
   return (
-    <div className="relative w-full px-[1vh] md:px-[calc(100%-84vw)] flex flex-col md:pt-[8vw] pt-[10vh]">
+    <div className="relative w-full px-[1vh] md:px-[calc(100%-84vw)] flex flex-row md:pt-[8vw] pt-[10vh] items-center md:gap-[18vw] gap-[5vh] overflow-hidden">
       <div className="textstructer">
         {["Building", "Seamless", "Web Experiences"].map((item, index) => {
           return (
@@ -53,6 +54,10 @@ const MainText = () => {
             </div>
           );
         })}
+      </div>
+
+      <div className=" pb-[6vh] md:pb-0">
+        <SpinningText duration={8} radius={6} className='md:text-[1.4vw] capitalize text-[1vh]'>design better • build smarter • deliver faster •</SpinningText>
       </div>
     </div>
   );

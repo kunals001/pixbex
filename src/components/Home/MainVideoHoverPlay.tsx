@@ -68,7 +68,7 @@ const HoverPlayVideo: React.FC<HoverPlayVideoProps> = ({
   playsInline
   preload="auto"
   onError={() => console.error("⚠️ Video failed to load:", videoUrl)}
->
+  >
   {videoUrl && (
     <source
       src={videoUrl}
@@ -82,7 +82,7 @@ const HoverPlayVideo: React.FC<HoverPlayVideoProps> = ({
     />
   )}
   Your browser does not support the video tag.
-</video>
+   </video>
 
     </div>
   );

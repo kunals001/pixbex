@@ -2,7 +2,7 @@
 
 const Page = () => {
   return (
-    <div className='w-full min-h-screen px-[1vh] md:mt-4 mt-2 md:px-[calc(100%-90vw)] text-zinc-100'>
+    <div className='px-[1vh] md:px-[calc(100%-84vw)] md:py-[3vw] py-[2vh] bg-gradient-to-b from-black to-[#0c0c13c9] min-h-screen'>
       hello
       
     </div>

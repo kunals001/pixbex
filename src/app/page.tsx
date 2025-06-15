@@ -8,9 +8,9 @@ const Page = () => {
   useLenis();
 
   return (
-    <div>
+    <main>
       <Main/>
-    </div>
+    </main>
   )
 }
 
