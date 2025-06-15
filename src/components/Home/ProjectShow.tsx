@@ -26,7 +26,7 @@ const ProjectShow = () => {
                 <div className='w-full flex md:flex-row flex-col-reverse md:py-[2vw] py-[1.5vh] px-[1vh] md:px-[calc(100%-84vw)]'>
                     <div className="md:w-1/2 w-full sticky md:mt-0 mt-5 md:block flex items-center justify-center">
                         <div className="md:sticky top-[5vw] z-20 ">
-                            <Link href="/signup">
+                            <Link href="/skills">
                                 <InteractiveHoverButton className='text-[2vh] md:text-[1.3vw] text-zinc-100 bg-gradient-to-r from-purple-500 border-none to-blue-500 md:px-[2.5vw] md:py-[.6vw]'>
                                     Show Skills
                                 </InteractiveHoverButton>

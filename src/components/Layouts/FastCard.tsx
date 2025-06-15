@@ -18,29 +18,29 @@ const FastCard = ({ text, href, desc, ref, num, className }: Props) => {
   const [isHovered, setIsHovered] = useState(false);
   const controls = useAnimation();
 
-  useEffect(() => {
-    let interval: NodeJS.Timeout;
+      useEffect(() => {
+        let interval: NodeJS.Timeout;
 
-    if (isHovered) {
-      controls.start({ y: 0, opacity: 1 });
-      let current = 20;
-      setDisplayNum(current);
+  if (isHovered) {
+    controls.start({ y: 0, opacity: 1 });
+    let current = 20;
+    interval = setInterval(() => {
+      current--;
+      if (current <= targetNum) {
+        clearInterval(interval);
+        setDisplayNum(targetNum);
+      } else {
+        setDisplayNum(current);
+      }
+    }, 20);
+  } else {
+    // Don't hide the number, just reset animation state if needed
+    controls.set({ y: 0, opacity: 1 });
+    setDisplayNum(targetNum);
+  }
 
-      interval = setInterval(() => {
-        current--;
-        if (current <= targetNum) {
-          clearInterval(interval);
-          setDisplayNum(targetNum);
-        } else {
-          setDisplayNum(current);
-        }
-      },  20); 
-    } else {
-      setDisplayNum(targetNum);
-    }
-
-    return () => clearInterval(interval);
-  }, [isHovered, targetNum, controls]);
+  return () => clearInterval(interval);
+      }, [isHovered, targetNum, controls]);
 
   return (
     <motion.div

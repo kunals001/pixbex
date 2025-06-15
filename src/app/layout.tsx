@@ -1,13 +1,11 @@
-
+// app/layout.tsx (or app/(main)/layout.tsx)
 import type { Metadata } from "next";
-import { Barlow } from 'next/font/google';
-import {Poppins} from 'next/font/google'
+import { Barlow, Poppins } from 'next/font/google';
 import { Toaster } from "react-hot-toast";
-import {ReduxProvider} from "@/redux/provider";
+import { ReduxProvider } from "@/redux/provider";
 import "./globals.css";
 import Header from "@/components/Navbar/Header";
 import Footer from "@/components/Footer/Footer";
-
 
 const barlow = Barlow({
   subsets: ['latin'],
@@ -21,13 +19,11 @@ const poppins = Poppins({
   weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
 });
 
-
-
 export const metadata: Metadata = {
   title: "Pixbex",
   description: "My Personal Portfolio",
   icons: {
-    icon: "/favicon.ico", // This sets the favicon correctly
+    icon: "/favicon.ico",
   },
 };
 
@@ -43,10 +39,10 @@ export default function RootLayout({
         cz-shortcut-listen="true"
       >
         <ReduxProvider>
-        <Header />
-        {children}
-        <Toaster position="top-right"/>
-        <Footer />
+          <Header />
+          {children}
+          <Toaster position="top-right" />
+          <Footer />
         </ReduxProvider>
       </body>
     </html>
