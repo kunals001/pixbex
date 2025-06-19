@@ -46,7 +46,7 @@ const UpdatePost = () => {
         setVideo(post.video);
         setTech(post.tech);
       } catch (error) {
-        toast.error("Failed to load post details");
+        console.log("Error in fetchPost:", error);
       }
     };
 

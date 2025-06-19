@@ -87,7 +87,7 @@ const Footer = () => {
 
           {/* Unchanged Text */}
           <h1 className="text-[5vw] tracking-tighter leading-[4.8vw] text-zinc-200 font-[800] mt-3">
-            Let's Build Something <br /> Great Together
+            Let&apos;s Build Something <br /> Great Together
           </h1>
         </div>
       </div>

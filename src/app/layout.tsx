@@ -2,7 +2,7 @@
 import type { Metadata } from "next";
 import { Barlow, Poppins } from 'next/font/google';
 import { Toaster } from "react-hot-toast";
-import { ReduxProvider } from "@/redux/provider";
+import ReduxProvider from "@/redux/provider";
 import "./globals.css";
 import Header from "@/components/Navbar/Header";
 import Footer from "@/components/Footer/Footer";

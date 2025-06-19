@@ -41,9 +41,9 @@ const Page = () => {
   return (
     <div className='w-full px-[1vh] md:mt-4 mt-3 md:px-[calc(100%-90vw)] text-zinc-100 flex flex-col md:gap-[2vw] gap-[2vh] items-center bg-gradient-to-b from-black to-[#0c0c13c9]'>
       <div className="w-full h-[10vh] flex flex-col gap-2 items-center justify-center">
-        <TextAnimate animation="slideLeft" by="character" className='md:text-[3vw] text-[3.5vh] text-zinc-100 font-[600] leading-none tracking-tighter'>Let's Connect</TextAnimate>
+        <TextAnimate animation="slideLeft" by="character" className='md:text-[3vw] text-[3.5vh] text-zinc-100 font-[600] leading-none tracking-tighter'>Let&apos;s Connect</TextAnimate>
 
-        <TextAnimate animation="blurIn" as="p" by="word" className='md:text-[1.3vw] text-[2vh] text-zinc-300 font-[400] leading-none tracking-tighter text-center md:w-[35vw]'>Feel free to reach out for collaborations, freelance projects, or just a friendly hello!</TextAnimate>
+        <TextAnimate animation="blurIn" as="p" by="word" className='md:text-[1.3vw] text-[2vh] text-zinc-300 font-[400] leading-none tracking-tighter text-center md:w-[35vw]'>Feel free to reach out for collaborations, freelance projects&lsquo; or just a friendly hello!</TextAnimate>
       </div>
 
       <form onSubmit={handleSubmit} className='md:w-[40vw] w-full flex flex-col gap-3'>

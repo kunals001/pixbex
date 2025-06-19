@@ -63,64 +63,57 @@ export const AnimatedBeam: React.FC<AnimatedBeamProps> = ({
         y2: ["0%", "0%"],
       };
 
-  useEffect(() => {
-    const updatePath = () => {
-      if (containerRef.current && fromRef.current && toRef.current) {
-        const containerRect = containerRef.current.getBoundingClientRect();
-        const rectA = fromRef.current.getBoundingClientRect();
-        const rectB = toRef.current.getBoundingClientRect();
+    useEffect(() => {
+  const updatePath = () => {
+    if (containerRef.current && fromRef.current && toRef.current) {
+      const containerRect = containerRef.current.getBoundingClientRect();
+      const rectA = fromRef.current.getBoundingClientRect();
+      const rectB = toRef.current.getBoundingClientRect();
 
-        const svgWidth = containerRect.width;
-        const svgHeight = containerRect.height;
-        setSvgDimensions({ width: svgWidth, height: svgHeight });
+      const svgWidth = containerRect.width;
+      const svgHeight = containerRect.height;
+      setSvgDimensions({ width: svgWidth, height: svgHeight });
 
-        const startX =
-          rectA.left - containerRect.left + rectA.width / 2 + startXOffset;
-        const startY =
-          rectA.top - containerRect.top + rectA.height / 2 + startYOffset;
-        const endX =
-          rectB.left - containerRect.left + rectB.width / 2 + endXOffset;
-        const endY =
-          rectB.top - containerRect.top + rectB.height / 2 + endYOffset;
+      const startX =
+        rectA.left - containerRect.left + rectA.width / 2 + startXOffset;
+      const startY =
+        rectA.top - containerRect.top + rectA.height / 2 + startYOffset;
+      const endX =
+        rectB.left - containerRect.left + rectB.width / 2 + endXOffset;
+      const endY =
+        rectB.top - containerRect.top + rectB.height / 2 + endYOffset;
 
-        const controlY = startY - curvature;
-        const d = `M ${startX},${startY} Q ${
-          (startX + endX) / 2
-        },${controlY} ${endX},${endY}`;
-        setPathD(d);
-      }
-    };
-
-    // Initialize ResizeObserver
-    const resizeObserver = new ResizeObserver((entries) => {
-      // For all entries, recalculate the path
-      for (let entry of entries) {
-        updatePath();
-      }
-    });
-
-    // Observe the container element
-    if (containerRef.current) {
-      resizeObserver.observe(containerRef.current);
+      const controlY = startY - curvature;
+      const d = `M ${startX},${startY} Q ${(startX + endX) / 2},${controlY} ${endX},${endY}`;
+      setPathD(d);
     }
+  };
 
-    // Call the updatePath initially to set the initial path
+  // ✅ Cleaned ResizeObserver — no unused variables
+  const resizeObserver = new ResizeObserver(() => {
     updatePath();
+  });
 
-    // Clean up the observer on component unmount
-    return () => {
-      resizeObserver.disconnect();
-    };
-  }, [
-    containerRef,
-    fromRef,
-    toRef,
-    curvature,
-    startXOffset,
-    startYOffset,
-    endXOffset,
-    endYOffset,
-  ]);
+  if (containerRef.current) {
+    resizeObserver.observe(containerRef.current);
+  }
+
+  updatePath(); // Initial path setup
+
+  return () => {
+    resizeObserver.disconnect();
+  };
+}, [
+  containerRef,
+  fromRef,
+  toRef,
+  curvature,
+  startXOffset,
+  startYOffset,
+  endXOffset,
+  endYOffset,
+    ]);
+
 
   return (
     <svg

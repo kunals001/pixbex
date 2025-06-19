@@ -70,7 +70,7 @@ const HireForm = ({ setOpen }: { setOpen: (val: boolean) => void }) => {
       </button>
 
       <h2 className="text-zinc-100 text-center text-2xl md:text-3xl font-bold mb-6 tracking-tight">
-        Let's Build Something Great
+        Let&apos;s Build Something Great
       </h2>
 
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">

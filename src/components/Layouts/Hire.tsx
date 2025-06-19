@@ -3,7 +3,6 @@ import React,{useEffect} from 'react'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 import { getAllHireRequests } from '@/redux/slice/adminSlice'
 import {deleteHireRequest} from "@/redux/slice/adminSlice"
-import { useRouter } from 'next/navigation'
 
 import {
   Table,

@@ -98,8 +98,9 @@ export const checkAdminAuth = createAsyncThunk(
     try {
       const response = await axios.get(`${API_URL}/api/auth/check-auth`);
       return response.data.user;
-    } catch (err: any) {
-      return rejectWithValue(err.response?.data?.message || "Something went wrong");
+    } catch (err) {
+      const error = err as AxiosError<{ message: string }>;
+      return rejectWithValue(error.response?.data?.message || "Contact failed");
     }
   }
 );
@@ -293,7 +294,7 @@ const adminSlice = createSlice({
         state.loading = true;
         state.error = null;
       })
-      .addCase(createPost.fulfilled, (state, action) => {
+      .addCase(createPost.fulfilled, (state) => {
         state.loading = false;
         state.error = null;
       // Optional: add new post to state.posts if needed
@@ -363,7 +364,7 @@ const adminSlice = createSlice({
         state.loading = true;
         state.error = null;
       })
-      .addCase(sendHireRequest.fulfilled, (state, action) => {
+      .addCase(sendHireRequest.fulfilled, (state) => {
         state.loading = false;
         state.error = null;
       })

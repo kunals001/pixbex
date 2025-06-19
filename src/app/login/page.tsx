@@ -21,7 +21,7 @@ const Page = () => {
     if (user) {
       router.push("/");
     }
-  }, [user]);
+  }, [user, router]);
 
  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
   e.preventDefault();

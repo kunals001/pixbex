@@ -1,6 +1,11 @@
 "use client";
 
-import { ComponentPropsWithoutRef, useEffect, useId, useRef, useState } from "react";
+import {
+  ComponentPropsWithoutRef,
+  useEffect,
+  useId,
+  useRef,
+} from "react";
 import { cn } from "@/lib/utils";
 
 export interface AnimatedGridPatternProps extends ComponentPropsWithoutRef<"svg"> {
@@ -8,7 +13,7 @@ export interface AnimatedGridPatternProps extends ComponentPropsWithoutRef<"svg"
   height?: number;
   x?: number;
   y?: number;
-  strokeDasharray?: any;
+  strokeDasharray?: string | number;
   children?: React.ReactNode;
 }
 
@@ -24,32 +29,28 @@ export function AnimatedGridPattern({
 }: AnimatedGridPatternProps) {
   const id = useId();
   const containerRef = useRef<HTMLDivElement>(null);
-  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
 
   useEffect(() => {
-    const resizeObserver = new ResizeObserver((entries) => {
-      for (let entry of entries) {
-        setDimensions({
-          width: entry.contentRect.width,
-          height: entry.contentRect.height,
-        });
-      }
+    const currentContainer = containerRef.current;
+
+    const resizeObserver = new ResizeObserver(() => {
+      // No-op: width/height are not used yet
     });
 
-    if (containerRef.current) {
-      resizeObserver.observe(containerRef.current);
+    if (currentContainer) {
+      resizeObserver.observe(currentContainer);
     }
 
     return () => {
-      if (containerRef.current) {
-        resizeObserver.unobserve(containerRef.current);
+      if (currentContainer) {
+        resizeObserver.unobserve(currentContainer);
       }
     };
   }, []);
 
   return (
     <div ref={containerRef} className={cn("relative w-full h-full", className)}>
-      {/* Render content on top of grid */}
+      {/* Foreground Content */}
       <div className="relative z-10">{children}</div>
 
       {/* Grid Background */}
