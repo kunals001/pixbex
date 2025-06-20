@@ -44,13 +44,13 @@ const Projects = () => {
             </div>
         </div>
 
-        <div className="grid md:grid-cols-4 grid-cols-2 md:gap-[1.5vw] gap-2 md:mt-[5vw] mt-[3vh] ">
-            <div className="shadow-xl shadow-gray-900">
+        <div className="grid md:grid-cols-3 grid-cols-2 md:gap-[1.5vw] gap-2 md:mt-[5vw] mt-[3vh] group rounded-xl">
+            <div className="shadow-lg colors rounded-xl transition-all duration-300">
                 <Card className="md:p-4 p-2">
                     {posts.map((post) => (
                        
                     <div key={post._id} onMouseMove={handleMouseMove} onMouseEnter={() => setHovering(true)} onMouseLeave={() => setHovering(false)} className="overflow-hidden rounded-md ">
-                    <Link href={`${post.tech}`}><div  className=""> <div className="absolute w-[2vw] h-[2vw] rounded-full pointer-events-none transition-transform duration-300 ease-out bg-gradient-to-r from-purple-500 to-blue-500 flex flex-col leading-none gap-0 items-center justify-center text-[1.2vw] font-[500] pb-8 z-20"
+                    <Link href={`${post.tech}`}><div  className=""> <div className="absolute w-[3vw] h-[3vw] rounded-full pointer-events-none transition-transform duration-300 ease-out bg-gradient-to-r from-purple-500 to-blue-500 flex flex-col leading-none gap-0 items-center justify-center text-[1.2vw] font-[500] pb-8 z-20"
                         style={{  transform: `translate(${pos.x - 32}px, ${pos.y - 32}px) scale(${hovering ? 1 : 0})`,}} />
                         <video
                         autoPlay

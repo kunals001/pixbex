@@ -2,7 +2,7 @@
 import React from 'react'
 import { useLenis } from '@/components/Layouts/UseLenis'
 import ProjectShow from '@/components/Home/ProjectShow';
-import TextAnimation from '@/components/Home/TextAnimation';
+import TextAnimation from '@/components/Home/ProjectText';
 
 const Page = () => {
 

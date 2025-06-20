@@ -1,3 +1,4 @@
+// eslint.config.js (or .ts)
 import { dirname } from "path";
 import { fileURLToPath } from "url";
 import { FlatCompat } from "@eslint/eslintrc";
@@ -11,6 +12,21 @@ const compat = new FlatCompat({
 
 const eslintConfig = [
   ...compat.extends("next/core-web-vitals", "next/typescript"),
+
+  // 👇 Custom overrides
+  {
+    files: ["**/*.ts", "**/*.tsx"],
+    languageOptions: {
+      parserOptions: {
+        project: "./tsconfig.json",
+      },
+    },
+    rules: {
+      // ✅ Disable this annoying rule globally
+      "@typescript-eslint/no-require-imports": "off",
+    },
+  },
 ];
 
 export default eslintConfig;
+

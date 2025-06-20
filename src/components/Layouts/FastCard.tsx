@@ -45,7 +45,7 @@ const FastCard = ({ text, href, desc, ref, num, className }: Props) => {
   return (
     <motion.div
       ref={ref}
-      className="relative md:h-[13vw] h-[18vh] p-2"
+      className="relative p-2"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       whileHover={{ scale: 1.015 }}

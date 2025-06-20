@@ -34,11 +34,11 @@ const ProjectShow = () => {
                         </div>
                     </div>
 
-                    <div className="md:w-[50vw] w-full flex flex-col md:gap-[1.5vw] gap-[2vh] ">
+                    <div className="md:w-[50vw] w-full flex flex-col md:gap-[1.5vw] gap-[2vh] group">
                         {posts.map((post) => (
-                            <div key={post._id} className="md:shadow-md shadow-blue-900 rounded-2xl">
-                                <Card className="w-full p-3 rounded-2xl bg-zinc-900">
-                                <MainVideoHoverPlay videoUrl={post.video} link="/skills" bubbleText="More Project" Icon={TrendingUp} />
+                            <div key={post._id} className="colors rounded-2xl">
+                                <Card col1='000000' col2='000000' className="w-full p-3 rounded-2xl bg-zinc-900">
+                                <MainVideoHoverPlay videoUrl={post.video} link="/skills" bubbleText="Hire Me" Icon={TrendingUp} />
                                 <div className="">
                                     <h1 className='md:text-[1.5vw] text-[1.9vh] font-[700] tracking-tighter md:px-3 md:py-1 px-2 py-1 bg-zinc-900 rounded-md '>{post.title}</h1>
                                     <p className='md:text-[1vw] text-[1.6vh] font-poppins font-[400] tracking-tighter md:px-3 md:py-1 px-2 py-1 md:leading-5.5 leading-3.5 font-italic text-zinc-400'>{post.desc}</p>

@@ -112,6 +112,17 @@ body {
   font-family: var(--font-barlow);
 }
 
+.colors {
+  transition: box-shadow 0.4s ease-in-out
+}
+
+.group:hover .colors {
+  box-shadow:
+    -5px -5px 14px rgb(71, 19, 150),
+     5px -5px 14px rgb(0, 11, 88),
+     0px 6px 18px rgb(69, 25, 82);
+}
+
 /* Thin scrollbar for WebKit browsers */
 ::-webkit-scrollbar {
   width: 6px;

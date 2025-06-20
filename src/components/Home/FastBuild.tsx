@@ -19,7 +19,7 @@ const FastBuild = () => {
           num="1"
           text="Next js"
           href="/fast/next.js-min.png"
-          desc="The React framework for production"
+          desc="Next.js is a React framework for fast, scalable, SEO-friendly websites."
         />
 
         <FastCard
@@ -27,7 +27,7 @@ const FastBuild = () => {
           num="2"
           text="Node js"
           href="/fast/nodejs-min.png"
-          desc="Event-driven, non-blocking I/O runtime"
+          desc="Node.js runs JavaScript on the server for fast backend development."
         />
 
         <FastCard
@@ -35,7 +35,7 @@ const FastBuild = () => {
           num="3"
           text="MongoDB"
           href="/fast/mongodb-min.png"
-          desc="Event-driven, non-blocking I/O runtime"
+          desc="MongoDB is a NoSQL database for storing flexible JSON-like data."
         />
 
         <FastCard
@@ -43,7 +43,7 @@ const FastBuild = () => {
           num="4"        
           text="React js"
           href="/fast/react-min.png"
-          desc="Event-driven, non-blocking I/O runtime"
+          desc="React.js helps create fast, interactive UIs with reusable code blocks."
         />
 
         <FastCard
@@ -51,7 +51,7 @@ const FastBuild = () => {
           num="5"         
           text="Typescript"
           href="/fast/ts-min.png"
-          desc="Event-driven, non-blocking I/O runtime"
+          desc="TypeScript adds static types to JavaScript for safer, scalable code."
         />
 
         <FastCard
@@ -59,7 +59,7 @@ const FastBuild = () => {
           num="6"         
           text="Express js"
           href="/express-js.svg"
-          desc="Event-driven, non-blocking I/O runtime"
+          desc="Express.js is a minimal Node.js framework for building web APIs."
         />
       </div>
     </div>
