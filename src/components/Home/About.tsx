@@ -14,7 +14,7 @@ const About = () => {
 
                 <p className='md:w-[45vw] md:text-[1vw] text-[1.3vh] text-zinc-300'>a self-taught web developer focused on building fast, modern, and scalable web applications.
                 I specialize in frontend and backend development using technologies like React.js, Next.js, Tailwind CSS, Node.js, Express, and MongoDB. I&apos;ve built multiple real-world projects including authentication systems, chat apps, and dynamic dashboards.
-                I enjoy creating clean UI, writing efficient APIs, and solving real-world problems through code. I'm always learning new tools and improving my development workflow.
+                I enjoy creating clean UI, writing efficient APIs, and solving real-world problems through code. I&apos;m always learning new tools and improving my development workflow.
                 Currently, I&apos;m open to freelance work, internships, and exciting collaboration opportunities.
                 Let&apos;s build something awesome together!</p>
 

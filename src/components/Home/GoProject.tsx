@@ -11,7 +11,7 @@ const GoProject = () => {
             </div>
 
             <p className="md:w-[45vw] md:text-[1.2vw] text-[1.4vh] text-zinc-300 text-center mx-auto leading-tight md:mt-4 mt-5">
-                Take a look at some of the work I've crafted — from responsive interfaces to dynamic web experiences.Click below to explore full case studies, design insights, and development highlights.
+                Take a look at some of the work I&apos;ve crafted — from responsive interfaces to dynamic web experiences.Click below to explore full case studies, design insights, and development highlights.
             </p>
 
             <Link href="/projects"><ShinyButton className="border-none bg-gradient-to-r from-pink-200 via-purple-400 to-blue-500 rounded-md flex items-center justify-center mx-auto md:mt-[3vw] mt-[3vh]">
