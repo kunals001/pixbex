@@ -1,29 +1,28 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import Upload from "@/components/Layouts/Upload";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { updatePost } from "@/redux/slice/adminSlice";
 import { toast } from "react-hot-toast";
 import { Loader } from "lucide-react";
 import axios from "axios";
-import {useRouter} from "next/navigation"
 
 const UpdatePost = () => {
   const { postId } = useParams();
   const dispatch = useAppDispatch();
   const { loading, user } = useAppSelector((state) => state.admin);
-
-  const router = useRouter()
+  const router = useRouter();
 
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
   const [cate, setCate] = useState("");
   const [video, setVideo] = useState("");
   const [tech, setTech] = useState("");
+  const [skills, setSkills] = useState<string[]>([]);
+  const [skillInput, setSkillInput] = useState("");
 
-  // Check admin
   useEffect(() => {
     if (user && !user.isAdmin) {
       toast.error("Access denied");
@@ -31,7 +30,6 @@ const UpdatePost = () => {
     }
   }, [user]);
 
-  // Fetch post
   useEffect(() => {
     const fetchPost = async () => {
       try {
@@ -45,6 +43,7 @@ const UpdatePost = () => {
         setCate(post.cate);
         setVideo(post.video);
         setTech(post.tech);
+        setSkills(post.skills || []);
       } catch (error) {
         console.log("Error in fetchPost:", error);
       }
@@ -52,6 +51,14 @@ const UpdatePost = () => {
 
     if (postId) fetchPost();
   }, [postId]);
+
+  const handleAddSkill = () => {
+    const trimmed = skillInput.trim();
+    if (trimmed && !skills.includes(trimmed)) {
+      setSkills([...skills, trimmed]);
+      setSkillInput("");
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -62,19 +69,13 @@ const UpdatePost = () => {
       cate,
       video,
       tech,
+      skills,
     };
 
     const result = await dispatch(updatePost({ postId: postId as string, updateData }));
 
     if (updatePost.fulfilled.match(result)) {
       toast.success("Post updated successfully");
-
-      setTitle("");
-      setDesc("");
-      setCate("");
-      setVideo("");
-      setTech("");
-
       router.push("/dashboard/?tab=posts");
     } else {
       toast.error(result.payload || "Update failed");
@@ -85,7 +86,7 @@ const UpdatePost = () => {
     "md:px-[1vw] md:py-[.4vw] outline-none md:text-[1vw] rounded-lg bg-zinc-800 text-zinc-200";
 
   return (
-    <div className="p-1 flex flex-col items-center pb-6">
+    <div className="p-1 flex flex-col items-center pb-6 min-h-screen pt-[3vw]">
       <div className="flex flex-col">
         <h1 className="md:text-[2vw] text-center font-prime font-[600] text-zinc-200">
           Update Post
@@ -117,20 +118,56 @@ const UpdatePost = () => {
                 className="cursor-pointer w-full outline-none border-none bg-zinc-800"
               >
                 <option value="">Select Post Category</option>
-                <option value="ecommerce">E-commerce</option>
-                <option value="blog">Blog</option>
-                <option value="landing">Landing Page</option>
-                <option value="social">Social</option>
+                <option value="E-commerce">E-commerce</option>
+                <option value="Blog App">Blog App</option>
+                <option value="Landing Page">Landing Page</option>
+                <option value="Social App">Social App</option>
               </select>
             </div>
           </div>
 
-          <input type="text" value={tech} onChange={(e) => setTech(e.target.value)} className={className} />
+          <input
+            type="text"
+            placeholder="Enter Website Link"
+            value={tech}
+            onChange={(e) => setTech(e.target.value)}
+            className={className}
+          />
+
+          {/* Skill Input */}
+          <div className="flex gap-2">
+            <input
+              type="text"
+              placeholder="Add a skill"
+              value={skillInput}
+              onChange={(e) => setSkillInput(e.target.value)}
+              className={className + " w-full"}
+            />
+            <button
+              type="button"
+              onClick={handleAddSkill}
+              className="md:px-[1vw] md:py-[.4vw] bg-green-600 text-white rounded-lg text-sm"
+            >
+              Add
+            </button>
+          </div>
+
+          {/* Show Skills */}
+          <div className="flex flex-wrap gap-2 mt-2">
+            {skills.map((skill, index) => (
+              <span
+                key={index}
+                className="px-2 py-1 bg-zinc-700 text-zinc-200 rounded-lg text-sm"
+              >
+                {skill}
+              </span>
+            ))}
+          </div>
 
           <button
             type="submit"
             disabled={loading}
-            className="w-full md:px-[1vw] md:py-[.4vw] outline-none md:text-[1vw] rounded-lg bg-gradient-to-r from-pink-400 to-purple-400 text-zinc-200 font-[700] text-center cursor-pointer "
+            className="w-full md:px-[1vw] md:py-[.4vw] outline-none md:text-[1vw] rounded-lg bg-gradient-to-r from-pink-400 to-purple-400 text-zinc-200 font-[700] text-center cursor-pointer"
           >
             {loading ? (
               <Loader className="text-zinc-200 mx-auto animate-spin" />

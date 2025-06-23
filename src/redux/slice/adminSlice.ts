@@ -21,6 +21,7 @@ export type Post = {
   cate: string;
   video: string;
   tech: string;
+  skills: string[];
   createdAt: string;
   updatedAt: string;
 };
@@ -121,7 +122,7 @@ export const contactus = createAsyncThunk<
 
 export const createPost = createAsyncThunk<
   Post,
-  { title: string; desc: string; cate: string; video: string; tech: string },
+  { title: string; desc: string; cate: string; video: string; tech: string, skills: string[] },
   { rejectValue: ErrorPayload }
  >("admin/createPost", async (data, { rejectWithValue }) => {
   try {

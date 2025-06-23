@@ -3,6 +3,7 @@ import MainText from './MainText'
 import {PixbexGlobe} from './PixbexGlobe'
 import FastBuild from './FastBuild'
 import Faq from './Faq'
+import About from './About'
 
 
 const Main = () => {
@@ -11,6 +12,7 @@ const Main = () => {
         <MainText/>
         <PixbexGlobe/>
         <FastBuild/>
+        <About/>
         <Faq/>
     </div>
   )

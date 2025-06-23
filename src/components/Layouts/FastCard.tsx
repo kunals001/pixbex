@@ -48,7 +48,6 @@ const FastCard = ({ text, href, desc, ref, num, className }: Props) => {
       className="relative p-2"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      whileHover={{ scale: 1.015 }}
       transition={{
         type: "spring",
         stiffness: 140,

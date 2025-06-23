@@ -33,7 +33,7 @@ const faqData = [
 const Faq = () => {
 
   return (
-    <div className='w-full px-[1vh] md:px-[calc(100%-84vw)] md:mt-[5vw] mt-[5vh] md:pb-[6vw] pb-[8vh]'>
+    <div className='w-full px-[2vh] md:px-[calc(100%-84vw)] md:mt-[5vw] mt-[5vh] md:pb-[6vw] pb-[8vh] '>
       <div className="md:text-[4vw] text-[3vh] font-[700] font-poppins md:leading-[4.5vw] md:pb-[2vw]">
         <TextAnimate animation="slideLeft" by="text">Frequently Asked</TextAnimate>
         <TextAnimate animation="slideRight" by="text">Questions</TextAnimate>
