@@ -4,6 +4,7 @@ import {PixbexGlobe} from './PixbexGlobe'
 import FastBuild from './FastBuild'
 import Faq from './Faq'
 import About from './About'
+import GoProject from './GoProject'
 
 
 const Main = () => {
@@ -13,6 +14,7 @@ const Main = () => {
         <PixbexGlobe/>
         <FastBuild/>
         <About/>
+        <GoProject/>
         <Faq/>
     </div>
   )
