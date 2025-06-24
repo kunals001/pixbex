@@ -3,10 +3,28 @@ import React,{useEffect, useState} from 'react'
 import { useAppSelector } from '@/redux/hooks'
 import SideBar from '@/components/Layouts/SideBar';
 import { useSearchParams } from 'next/navigation';
-import Contact from '@/components/Layouts/Contact';
-import AddPost from '@/components/Layouts/AddPost';
-import GetPosts from '@/components/Layouts/GetPosts';
-import Hire from '@/components/Layouts/Hire';
+import dynamic from "next/dynamic";
+
+const Contact = dynamic(() => import('@/components/Layouts/Contact'), {
+  loading: () => <p>Loading contact...</p>,
+  ssr: false, // agar browser APIs use ho to, nahi to hata do
+});
+
+const AddPost = dynamic(() => import('@/components/Layouts/AddPost'), {
+  loading: () => <p>Loading add post...</p>,
+  ssr: false,
+});
+
+const GetPosts = dynamic(() => import('@/components/Layouts/GetPosts'), {
+  loading: () => <p>Loading posts...</p>,
+  ssr: false,
+});
+
+const Hire = dynamic(() => import('@/components/Layouts/Hire'), {
+  loading: () => <p>Loading hire section...</p>,
+  ssr: false,
+});
+
 
 const Page = () => {
 

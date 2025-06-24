@@ -1,6 +1,16 @@
-import { VideoText } from "@/components/magicui/video-text";
+
 import { ShinyButton } from "../magicui/shiny-button";
 import Link from "next/link";
+import dynamic from "next/dynamic";
+const VideoText = dynamic(
+  () => import("@/components/magicui/video-text"),
+  {
+    loading: () => <p className="mx-auto">Loading video text...</p>,
+    ssr: false, // agar browser-specific ho toh lagao, nahi toh hatao
+  }
+);
+
+
 
 const GoProject = () => {
   return (

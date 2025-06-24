@@ -6,13 +6,25 @@ import { ShinyButton } from "@/components/magicui/shiny-button";
 import Card from "@/components/Hire/Card";
 import { motion, AnimatePresence } from "framer-motion";
 import { BentoDemo } from "@/components/Hire/Offer";
-import WorkFlow from "@/components/Hire/WorkFlow";
-import Projects from "@/components/Hire/Projects";
-import HireForm from "@/components/Hire/HireForm";
-import { useLenis } from '@/components/Layouts/UseLenis'
+import dynamic from "next/dynamic";
+
+const WorkFlow = dynamic(() => import("@/components/Hire/WorkFlow"), {
+  loading: () => <p className="mx-auto">Loading workflow...</p>,
+  ssr: false, // Optional: only add if component depends on browser APIs
+});
+
+const Projects = dynamic(() => import("@/components/Hire/Projects"), {
+  loading: () => <p className="mx-auto">Loading projects...</p>,
+  ssr: false,
+});
+
+const HireForm = dynamic(() => import("@/components/Hire/HireForm"), {
+  loading: () => <p className="mx-auto">Loading form...</p>,
+  ssr: false,
+});
+
 
 const Page = () => {
-  useLenis();
   const [open, setOpen] = useState(false);
 
   return (

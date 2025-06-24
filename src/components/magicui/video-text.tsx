@@ -64,7 +64,7 @@ export interface VideoTextProps {
   as?: ElementType;
 }
 
-export function VideoText({
+function VideoText({
   src,
   children,
   className = "",
@@ -131,3 +131,6 @@ export function VideoText({
     </Component>
   );
 }
+
+
+export  default VideoText;

@@ -1,10 +1,16 @@
 import React from 'react'
-import MainText from './MainText'
-import {PixbexGlobe} from './PixbexGlobe'
-import FastBuild from './FastBuild'
-import Faq from './Faq'
-import About from './About'
-import GoProject from './GoProject'
+import  dynamic from 'next/dynamic'
+
+
+const GoProject = dynamic(() => import('./GoProject'), { ssr: false });
+const FastBuild = dynamic(() => import('./FastBuild'), { ssr: false });
+const Faq = dynamic(() => import('./Faq'), { ssr: false });
+const About = dynamic(() => import('./About'), { ssr: false });
+const MainText = dynamic(() => import('./MainText'), { ssr: false });
+const PixbexGlobe = dynamic(() => import("./PixbexGlobe"), {
+  ssr: false,
+});
+
 
 
 const Main = () => {

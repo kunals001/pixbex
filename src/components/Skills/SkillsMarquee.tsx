@@ -87,7 +87,7 @@ const ReviewCard = ({
   );
 };
 
-export function Marquee3D() {
+function Marquee3D() {
   return (
     <div className="relative flex h-[48rem] w-full flex-row items-center justify-center gap-16 overflow-hidden bg-[#0f0f0f] [perspective:1400px]">
       <div
@@ -139,3 +139,5 @@ export function Marquee3D() {
     </div>
   );
 }
+
+export default Marquee3D;

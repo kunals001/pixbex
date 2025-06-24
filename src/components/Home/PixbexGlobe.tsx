@@ -1,6 +1,6 @@
 import { Globe } from "@/components/magicui/globe";
 
-export function PixbexGlobe() {
+function PixbexGlobe() {
   return (
     <div className="relative w-full px-[1vh] md:px-[calc(100%-84vw)] flex flex-col md:pt-[8vw] pt-[6vh] items-center justify-center">
     <div className="w-full md:h-[30vw] relative flex size-full items-center justify-center overflow-hidden rounded-lg  px-40 pb-40 pt-8 md:pb-60">
@@ -13,3 +13,5 @@ export function PixbexGlobe() {
     </div>
   );
 }
+
+export default PixbexGlobe
