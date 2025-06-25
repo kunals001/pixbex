@@ -1,6 +1,11 @@
 import FastCard from "../Layouts/FastCard"
-import { AnimatedGridPattern } from "@/components/magicui/animated-grid-pattern";
+import dynamic from "next/dynamic";
 import { ShinyButton } from "../magicui/shiny-button";
+
+const AnimatedGridPattern = dynamic(() =>
+    import("../magicui/animated-grid-pattern"),
+    { ssr: false }
+);
 
 const FastBuild = () => {
   return (

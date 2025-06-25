@@ -1,12 +1,19 @@
 
+import dynamic from "next/dynamic";
 import { ShinyButton } from "../magicui/shiny-button";
 import Link from "next/link";
+
+const AnimatedGridPattern = dynamic(() =>
+    import("../magicui/animated-grid-pattern"),
+    { ssr: false }
+);
 
 
 
 const GoProject = () => {
   return (
-    <div className='w-full px-[1vh] md:px-[calc(100%-84vw)] md:mt-[1vw] mt-[1vh] md:pb-[6vw] pb-[8vh]'>
+    <AnimatedGridPattern>
+    <div className='w-full px-[1vh] md:px-[calc(100%-84vw)] md:mt-[1vw] mt-[1vh] md:mb-[6vw] mb-[8vh] md:pb-[4vw] pb-[4vh] border-t-1 border-b-1 border-zinc-800'>
         <div className="card w-full relative rounded-2xl ">
             <div className="under-image relative w-full overflow-hidden">
                 <h1 className="md:text-[13vw] text-[10vh] font-bold text-center">Projects</h1>
@@ -22,7 +29,7 @@ const GoProject = () => {
                 </h4>
             </ShinyButton></Link>
         </div>
-    </div>
+    </div></AnimatedGridPattern>
   )
 }
 

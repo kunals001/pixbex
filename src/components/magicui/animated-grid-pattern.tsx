@@ -17,7 +17,7 @@ export interface AnimatedGridPatternProps extends ComponentPropsWithoutRef<"svg"
   children?: React.ReactNode;
 }
 
-export function AnimatedGridPattern({
+export default function AnimatedGridPattern({
   width = 40,
   height = 40,
   x = -1,

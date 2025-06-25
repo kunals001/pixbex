@@ -2,17 +2,17 @@
 import dynamic from "next/dynamic";
 
 const MainText = dynamic(() => import("@/components/Skills/MainText"), {
-  loading: () => <p>Loading main text...</p>,
+  loading: () => <p className="mx-auto">Loading main text...</p>,
   ssr: false, // Add only if these components use browser APIs or window/document
 });
 
 const AllSkills = dynamic(() => import("@/components/Skills/AllSkills"), {
-  loading: () => <p>Loading skills...</p>,
+  loading: () => <p className="mx-auto">Loading skills...</p>,
   ssr: false,
 });
 
 const Marquee3D = dynamic(() => import("@/components/Skills/SkillsMarquee"), {
-  loading: () => <p>Loading 3D marquee...</p>,
+  loading: () => <p className="mx-auto">Loading 3D marquee...</p>,
   ssr: false,
 });
 

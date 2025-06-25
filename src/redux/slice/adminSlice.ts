@@ -5,6 +5,7 @@ axios.defaults.withCredentials = true;
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
+
 export type User = {
   _id: string;
   name: string;
