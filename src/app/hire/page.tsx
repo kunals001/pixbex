@@ -35,6 +35,10 @@ const HireForm = dynamic(() => import("@/components/Hire/HireForm"), {
   ssr: false,
 });
 
+const Footer = dynamic(() => import("@/components/Footer/Footer"), {
+  ssr: false,
+})
+
 
 const Page = () => {
   const [open, setOpen] = useState(false);
@@ -112,6 +116,9 @@ const Page = () => {
          </motion.div>
        )}
      </AnimatePresence>
+
+
+     <Footer/>
     </>
   );
 };

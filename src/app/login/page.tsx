@@ -39,7 +39,7 @@ const Page = () => {
     <div className="w-full flex items-center justify-center">
         <div className="flex flex-col items-center justify-center md:w-[30vw] w-full md:h-[40vw] h-[60vh] relative md:px-0 px-6">
 
-            <h2 className="md:text-[2.2vw] text-[2vh] font-second font-[600] select-none">Welcome Back</h2>
+            <h2 className="md:text-[2.2vw] text-[2vh] font-second font-[600] select-none text-transparent background-clip-text bg-clip-text bg-gradient-to-r from-[#8d81ff] to-[#8d3cf7] ">Welcome Back</h2>
 
             <form onSubmit={handleSubmit} className="w-full flex flex-col md:px-[2vw] mt-4">
 

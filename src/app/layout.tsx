@@ -5,7 +5,6 @@ import { Toaster } from "react-hot-toast";
 import ReduxProvider from "@/redux/provider";
 import "./globals.css";
 import Header from "@/components/Navbar/Header";
-import Footer from "@/components/Footer/Footer";
 import LenisScroll from "@/components/Layouts/SmoothScroll";
 
 const barlow = Barlow({
@@ -44,7 +43,6 @@ export default function RootLayout({
           <Header />
           {children}
           <Toaster position="top-right" />
-          <Footer />
         </ReduxProvider>
       </body>
     </html>

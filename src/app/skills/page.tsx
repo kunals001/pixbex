@@ -16,12 +16,15 @@ const Marquee3D = dynamic(() => import("@/components/Skills/SkillsMarquee"), {
   ssr: false,
 });
 
-
+const Footer = dynamic(() => import("@/components/Footer/Footer"), {
+  ssr: false,
+})
 
 const Page = () => {
 
 
   return (
+    <>
     <div className='px-[1vh] md:px-[calc(100%-84vw)] md:py-[3vw] py-[2vh] min-h-screen'>
 
       <MainText/>
@@ -33,6 +36,8 @@ const Page = () => {
       </div>
       
     </div>
+    <Footer/>
+    </>
   )
 }
 

@@ -1,10 +1,13 @@
 "use client"
 import dynamic from 'next/dynamic'
-
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 import {contactus} from '@/redux/slice/adminSlice'
 import { useState } from 'react'
 import toast from 'react-hot-toast'
+
+const Footer = dynamic(() => import("@/components/Footer/Footer"), {
+  ssr: false,
+})
 
 const TextAnimate = dynamic(() => import("@/components/magicui/text-animate"), {
   ssr: false,
@@ -39,6 +42,7 @@ const Page = () => {
   const className = "w-full md:px-[1vw] md:py-[.5vw] px-4 py-2.5 rounded-lg outline-none placeholder:text-zinc-400 placeholder:text-[1.8vh] placeholder:md:text-[1vw] text-zinc-100 md:text-[1vw] text-[1.8vh] bg-zinc-900"
 
   return (
+    <>
     <div className='w-full px-[1vh] md:mt-4 mt-3 md:px-[calc(100%-90vw)] text-zinc-100 flex flex-col md:gap-[2vw] gap-[2vh] items-center bg-gradient-to-b from-black to-[#0c0c13c9] md:pb-[4vw] pb-[6vh] pt-[3vh] md:pt-[2vw]'>
       <div className="w-full h-[10vh] flex flex-col gap-2 items-center justify-center">
         <TextAnimate animation="slideLeft" by="character" className='md:text-[3vw] text-[3.5vh] text-zinc-100 font-[600] leading-none tracking-tighter'>Let&apos;s Connect</TextAnimate>
@@ -70,8 +74,10 @@ const Page = () => {
         </button>
       </form>
 
-
+      
     </div>
+    <Footer/>
+    </>
   )
 }
 

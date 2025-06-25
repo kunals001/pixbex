@@ -250,9 +250,7 @@ export const logout = createAsyncThunk<void, void, { rejectValue: string }>(
   "admin/logout",
   async (_, { rejectWithValue }) => {
     try {
-      await axios.post(`${API_URL}/api/auth/logout`, null, {
-        withCredentials: true, // Ensure cookies are sent
-      });
+      await axios.post(`${API_URL}/api/auth/logout`);
     } catch (err) {
       const error = err as AxiosError<{ message?: string }>;
       return rejectWithValue(error.response?.data?.message || "Logout failed");
