@@ -407,4 +407,4 @@ const TextAnimateBase = ({
 };
 
 // Export the memoized version
-export const TextAnimate = memo(TextAnimateBase);
+export default memo(TextAnimateBase);

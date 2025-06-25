@@ -157,6 +157,19 @@ html {
 }
 
 
+.under-image h1 {
+  background-image: url(https://ik.imagekit.io/tzq13ojas/go.avif?updatedAt=1750824925017);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-background-clip: text;
+  -moz-text-fill-color: transparent;
+}
+
+
 :root {
   --radius: 0.625rem;
   --background: oklch(1 0 0);

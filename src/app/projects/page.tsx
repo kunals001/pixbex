@@ -1,13 +1,8 @@
 "use client"
 import dynamic from "next/dynamic";
-
-const ProjectShow = dynamic(() => import('@/components/Home/ProjectShow'), {
-  loading: () => <p>Loading projects...</p>,
-  ssr: false, // agar browser-only code ho to, nahi to hata sakte ho
-});
+const  ProjectShow = dynamic(() => import('@/components/Home/ProjectShow'), { ssr: false });
 
 const TextAnimation = dynamic(() => import('@/components/Home/ProjectText'), {
-  loading: () => <p>Loading text animation...</p>,
   ssr: false,
 });
 

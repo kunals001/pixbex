@@ -1,14 +1,6 @@
 
 import { ShinyButton } from "../magicui/shiny-button";
 import Link from "next/link";
-import dynamic from "next/dynamic";
-const VideoText = dynamic(
-  () => import("@/components/magicui/video-text"),
-  {
-    loading: () => <p className="mx-auto">Loading video text...</p>,
-    ssr: false, // agar browser-specific ho toh lagao, nahi toh hatao
-  }
-);
 
 
 
@@ -16,8 +8,8 @@ const GoProject = () => {
   return (
     <div className='w-full px-[1vh] md:px-[calc(100%-84vw)] md:mt-[1vw] mt-[1vh] md:pb-[6vw] pb-[8vh]'>
         <div className="card w-full relative rounded-2xl ">
-            <div className="relative md:h-[15vw] h-[10vh] w-full overflow-hidden">
-                <VideoText src={"/pro.mkv"}>Projects</VideoText>
+            <div className="under-image relative w-full overflow-hidden">
+                <h1 className="md:text-[13vw] text-[10vh] font-bold text-center">Projects</h1>
             </div>
 
             <p className="md:w-[45vw] md:text-[1.2vw] text-[1.4vh] text-zinc-300 text-center mx-auto leading-tight md:mt-4 mt-5">

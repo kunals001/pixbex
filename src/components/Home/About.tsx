@@ -1,5 +1,9 @@
 import Image from 'next/image'
-import { TextAnimate } from '../magicui/text-animate'
+import dynamic from 'next/dynamic'
+
+const TextAnimate = dynamic(() => import("@/components/magicui/text-animate"), {
+  ssr: false,
+});
 
 const About = () => {
   return (

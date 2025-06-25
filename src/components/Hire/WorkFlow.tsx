@@ -2,7 +2,11 @@ import React from 'react';
 import { AuroraText } from "@/components/magicui/aurora-text";
 import Card from './Card';
 import { ArrowRight } from 'lucide-react';
-import { TextAnimate } from '../magicui/text-animate';
+import dynamic from 'next/dynamic';
+
+const TextAnimate = dynamic(() => import("@/components/magicui/text-animate"), {
+  ssr: false,
+});
 
 const steps = ["Discover", "Design", "Develop", "Launch"];
 

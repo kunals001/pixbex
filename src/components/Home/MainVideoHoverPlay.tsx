@@ -2,6 +2,7 @@
 import React, { useRef, useState } from 'react';
 import Link from 'next/link';
 import { LucideIcon } from 'lucide-react';
+import Image from 'next/image';
 
 interface HoverPlayVideoProps {
   videoUrl?: string;
@@ -58,31 +59,7 @@ const HoverPlayVideo: React.FC<HoverPlayVideoProps> = ({
         </div>
       </Link>
 
-     <video
-  ref={videoRef}
-  muted
-  loop
-  className="w-full md:h-[22vw] object-cover"
-  width={1920}
-  height={1080}
-  playsInline
-  preload="auto"
-  onError={() => console.error("⚠️ Video failed to load:", videoUrl)}
-  >
-  {videoUrl && (
-    <source
-      src={videoUrl}
-      type={
-        videoUrl.endsWith('.webm')
-          ? 'video/webm'
-          : videoUrl.endsWith('.mp4')
-          ? 'video/mp4'
-          : 'video/mp4' // fallback
-      }
-    />
-  )}
-  Your browser does not support the video tag.
-   </video>
+     <Image src={videoUrl || ""} alt="Project Image" width={1000} height={1000} className="w-full md:h-[22vw] object-cover" loading='lazy' priority ></Image>
 
     </div>
   );

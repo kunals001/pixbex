@@ -1,12 +1,24 @@
 "use client";
 import React, { useState } from "react";
-import ThreeDCard from "@/components/Hire/GlowDiv";
-import { TextAnimate } from "@/components/magicui/text-animate";
-import { ShinyButton } from "@/components/magicui/shiny-button";
-import Card from "@/components/Hire/Card";
-import { motion, AnimatePresence } from "framer-motion";
-import { BentoDemo } from "@/components/Hire/Offer";
 import dynamic from "next/dynamic";
+import { ShinyButton } from "@/components/magicui/shiny-button";
+import { motion, AnimatePresence } from "framer-motion";
+
+const Card = dynamic(() => import("@/components/Hire/Card"), {
+  ssr: false,
+});
+
+const BentoDemo = dynamic(() => import("@/components/Hire/Offer"), {
+  ssr: false,
+});
+
+const ThreeDCard = dynamic(() => import("@/components/Hire/GlowDiv"), {
+  ssr: false,
+});
+
+const TextAnimate = dynamic(() => import("@/components/magicui/text-animate"), {
+  ssr: false,
+})
 
 const WorkFlow = dynamic(() => import("@/components/Hire/WorkFlow"), {
   loading: () => <p className="mx-auto">Loading workflow...</p>,

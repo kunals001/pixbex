@@ -1,6 +1,8 @@
 import React from 'react'
-import { FlipText } from '../magicui/flip-text'
-import Tilt from '../Layouts/Tilt'
+import dynamic from 'next/dynamic'
+
+const Tilt = dynamic(() => import('../Layouts/Tilt'), { ssr: false });
+const FlipText = dynamic(() => import('../magicui/flip-text'), { ssr: false });
 
 const ProjectText = () => {
   return (

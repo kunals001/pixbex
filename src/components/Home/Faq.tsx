@@ -1,11 +1,15 @@
 
-import { TextAnimate } from '../magicui/text-animate';
+import dynamic from "next/dynamic";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+
+const TextAnimate = dynamic(() => import("@/components/magicui/text-animate"), {
+  ssr: false,
+});
 
 const faqData = [
   {

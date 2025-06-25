@@ -1,12 +1,19 @@
 
+"use client";
 import { Webhook, SearchCheck, Cpu,Settings2 } from "lucide-react";
-
-
 import { cn } from "@/lib/utils";
-import {AnimatedBeamMultipleOutputDemo} from "@/components/Layouts/Beam";
-import { BentoCard, BentoGrid } from "@/components/magicui/bento-grid";
+import dynamic from "next/dynamic";
 import { Marquee } from "@/components/magicui/marquee";
 import Image from "next/image";
+
+const BentoGrid = dynamic(() =>
+  import("../magicui/bento-grid").then((mod) => mod.BentoGrid), { ssr: false }
+);
+const BentoCard = dynamic(() =>
+  import("../magicui/bento-grid").then((mod) => mod.BentoCard), { ssr: false }
+);
+
+
 
 const files = [
   {
@@ -51,7 +58,7 @@ const features = [
             key={idx}
             className={cn(
               "relative w-32 cursor-pointer overflow-hidden rounded-xl border p-4",
-              "border-purple-950 bg-zinc-900 hover:bg-zinc-950/[.05]",
+              "border-zinc-900 bg-zinc-900 hover:bg-zinc-950/[.05]",
               "transform-gpu blur-[1px] transition-all duration-300 ease-out hover:blur-none",
             )}
           >
@@ -72,22 +79,22 @@ const features = [
     Icon: Webhook,
     name: "Web Designs",
     description: "Get notified when something happens.",
-    href: "#",
+    href: "/skills",
     cta: "Learn more",
     className: "col-span-3 lg:col-span-2",
     background: (
-      <Image src="https://ik.imagekit.io/tzq13ojas/web.webp?updatedAt=1749890797470" alt="web" width={1200} height={800} className="absolute w-full right-0 h-full object-cover border-none transition-all duration-300 ease-out group-hover:scale-105" />
+      <Image loading="eager" property="true" src="https://ik.imagekit.io/tzq13ojas/web.webp?updatedAt=1749890797470" alt="web" width={1200} height={800} className="absolute w-full right-0 h-full object-cover border-none transition-all duration-300 ease-out group-hover:scale-105" />
     ),
   },
   {
     Icon: Cpu,
     name: "Technologies",
     description: "Supports 100+ integrations and counting.",
-    href: "#",
+    href: "/skills",
     cta: "Learn more",
     className: "col-span-3 lg:col-span-2",
     background: (
-      <AnimatedBeamMultipleOutputDemo className="absolute right-2 top-4 h-[300px] border-none transition-all duration-300 ease-out [mask-image:linear-gradient(to_top,transparent_10%,#000_100%)] group-hover:scale-105" />
+      <Image loading="eager" property="true" src="https://ik.imagekit.io/tzq13ojas/skill.avif?updatedAt=1750833859214" alt="web" width={1200} height={800} className="absolute w-full right-0 h-full object-cover border-none transition-all duration-300 ease-out group-hover:scale-105" />
     ),
   },
   {
@@ -95,15 +102,15 @@ const features = [
     name: "SEO Optimization",
     description: "Use the calendar to filter your files by date.",
     className: "col-span-3 lg:col-span-1",
-    href: "#",
+    href: "/skills",
     cta: "Learn more",
     background: (
-      <Image src="https://ik.imagekit.io/tzq13ojas/seo.webp?updatedAt=1749889567731" alt="seo" width={500} height={500} className="absolute w-full right-0 h-full object-cover border-none transition-all duration-300 ease-out group-hover:scale-105" />
+      <Image loading="eager" property="true" src="https://ik.imagekit.io/tzq13ojas/seo.avif?updatedAt=1750834117114" alt="seo" width={500} height={500} className="absolute w-full right-0 h-full object-cover border-none transition-all duration-300 ease-out group-hover:scale-105" />
     ),
   },
 ];
 
-export function BentoDemo() {
+export default function BentoDemo() {
   return (
     <BentoGrid>
       {features.map((feature, idx) => (

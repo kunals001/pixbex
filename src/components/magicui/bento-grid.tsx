@@ -19,7 +19,7 @@ interface BentoCardProps extends ComponentPropsWithoutRef<"div"> {
   cta: string;
 }
 
-const BentoGrid = ({ children, className, ...props }: BentoGridProps) => {
+export const BentoGrid = ({ children, className, ...props }: BentoGridProps) => {
   return (
     <div
       className={cn(
@@ -33,7 +33,7 @@ const BentoGrid = ({ children, className, ...props }: BentoGridProps) => {
   );
 };
 
-const BentoCard = ({
+export const BentoCard = ({
   name,
   className,
   background,
@@ -46,7 +46,7 @@ const BentoCard = ({
   <div
     key={name}
     className={cn(
-      "group relative col-span-3 flex flex-col justify-between overflow-hidden rounded-xl border-r-[.3vh] border-b-[.2vh] border-t-[.2vh] border-l-[.3vh] border-[#1c1734a1] border-t-[#210F37] border-l-[#200f38f8]",
+      "group relative col-span-3 flex flex-col justify-between overflow-hidden rounded-xl border border-zinc-900",
       "bg-gradient-to-l from-[#0e0d17eb] to-[#0d0f17c9] [box-shadow:0_0_0_1px_rgba(0,0,0,.03),0_2px_4px_rgba(0,0,0,.05),0_12px_24px_rgba(0,0,0,.05)]",
       className,
     )}
@@ -77,4 +77,3 @@ const BentoCard = ({
   </div>
 );
 
-export { BentoCard, BentoGrid };

@@ -1,9 +1,13 @@
 "use client"
 import React,{useEffect, useState} from 'react'
 import { useAppSelector } from '@/redux/hooks'
-import SideBar from '@/components/Layouts/SideBar';
 import { useSearchParams } from 'next/navigation';
 import dynamic from "next/dynamic";
+
+const SideBar = dynamic(() => import('@/components/Layouts/SideBar'), {
+  loading: () => <p>Loading sidebar...</p>,
+  ssr: false,
+})
 
 const Contact = dynamic(() => import('@/components/Layouts/Contact'), {
   loading: () => <p>Loading contact...</p>,

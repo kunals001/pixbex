@@ -1,9 +1,14 @@
 "use client"
-import { TextAnimate } from '@/components/magicui/text-animate'
+import dynamic from 'next/dynamic'
+
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 import {contactus} from '@/redux/slice/adminSlice'
 import { useState } from 'react'
 import toast from 'react-hot-toast'
+
+const TextAnimate = dynamic(() => import("@/components/magicui/text-animate"), {
+  ssr: false,
+})
 
 const Page = () => {
   const [name, setName] = useState("")
@@ -16,11 +21,6 @@ const Page = () => {
 
   const handleSubmit = async(e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    if (!name || !email || !message || !reason || reason === "default") {
-    toast.error("Please fill all fields including a valid reason");
-    return;
-    }
 
     try {
       await dispatch(contactus({

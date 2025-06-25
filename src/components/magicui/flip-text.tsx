@@ -28,7 +28,7 @@ const defaultVariants: Variants = {
   visible: { rotateX: 0, opacity: 1 },
 };
 
-export function FlipText({
+export default function FlipText({
   children,
   duration = 0.5,
   delayMultiple = 0.08,

@@ -2,12 +2,16 @@
 
 import React, { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
-import Upload from "@/components/Layouts/Upload";
+import dynamic from "next/dynamic";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { updatePost } from "@/redux/slice/adminSlice";
 import { toast } from "react-hot-toast";
 import { Loader } from "lucide-react";
 import axios from "axios";
+
+const Upload = dynamic(() => import("@/components/Layouts/Upload"), {
+  ssr: false,
+});
 
 const UpdatePost = () => {
   const { postId } = useParams();
