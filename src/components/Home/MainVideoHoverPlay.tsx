@@ -1,11 +1,11 @@
-'use client';
-import React, { useRef, useState } from 'react';
+"use client";
+import React, { useState } from 'react';
 import Link from 'next/link';
 import { LucideIcon } from 'lucide-react';
 import Image from 'next/image';
 
 interface HoverPlayVideoProps {
-  videoUrl?: string;
+  videoUrl?: string; // this will now be treated as image URL
   link: string;
   bubbleText: string;
   Icon: LucideIcon;
@@ -19,7 +19,6 @@ const HoverPlayVideo: React.FC<HoverPlayVideoProps> = ({
 }) => {
   const [pos, setPos] = useState({ x: 0, y: 0 });
   const [hovering, setHovering] = useState(false);
-  const videoRef = useRef<HTMLVideoElement>(null);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -31,13 +30,10 @@ const HoverPlayVideo: React.FC<HoverPlayVideoProps> = ({
 
   const handleMouseEnter = () => {
     setHovering(true);
-    videoRef.current?.play();
   };
 
   const handleMouseLeave = () => {
     setHovering(false);
-    videoRef.current?.pause();
-    videoRef.current!.currentTime = 0;
   };
 
   return (
@@ -59,8 +55,14 @@ const HoverPlayVideo: React.FC<HoverPlayVideoProps> = ({
         </div>
       </Link>
 
-     <Image src={videoUrl || ""} alt="Project Image" width={1000} height={1000} className="w-full md:h-[22vw] object-cover" loading='lazy' priority ></Image>
-
+      <Image
+        src={videoUrl || ""}
+        alt="Project Image"
+        width={1000}
+        height={1000}
+        className="w-full md:h-[22.5vw] h-[27vh] object-cover"
+        loading="lazy"
+      />
     </div>
   );
 };

@@ -23,15 +23,15 @@ const ProjectShow = () => {
   if (loading) return <div className="text-white p-4">Loading posts...</div>;
 
   return (
-    <section className="md:px-[calc(100%-84vw)] px-2 md:pb-[8vw] pb-[3vh] md:mt-[4vw] mt-[3vh] border-t border-zinc-800">
+    <section className="md:px-[calc(100%-84vw)] px-2 md:pb-[8vw] pb-[3vh] md:mt-[4vw] mt-[3vh] border-t border-zinc-800 pt-[4vh] md:pt-[3vw]">
       {posts.length > 0 ? (
         <div className="flex md:flex-row flex-col-reverse gap-6">
           
           {/* Left Button */}
-          <div className="md:w-1/2 w-full flex items-center justify-center">
-            <div className="md:sticky top-[5vw] z-20">
+          <div className="md:w-1/2 w-full">
+            <div className="md:sticky top-[5vw] z-20 md:px-0 px-[2vh] ">
               <Link href="/skills">
-                <InteractiveHoverButton className="text-[2vh] md:text-[1.3vw] text-zinc-100 bg-gradient-to-r from-purple-500 to-blue-500 border-none md:px-[2.5vw] md:py-[.6vw]">
+                <InteractiveHoverButton className="text-[2vh] md:text-[1.3vw] text-zinc-100 bg-gradient-to-r from-purple-500 to-blue-500 border-none md:px-[2.5vw] md:py-[.6vw] md:w-auto w-full flex items-center justify-center">
                   Show Skills
                 </InteractiveHoverButton>
               </Link>
@@ -47,12 +47,12 @@ const ProjectShow = () => {
                 <div className="mt-3">
                   <h1 className="md:text-[1.5vw] text-[2vh] font-bold tracking-tight bg-zinc-900 rounded-md px-3 py-1 text-zinc-100 flex items-center justify-between">
                     {post.title}
-                    <span className="bg-[#008ee7] text-white px-2 py-0.5 rounded-md text-sm flex items-center gap-1">
-                      <BadgeInfo className="size-4" />{post.cate}
+                    <span className="bg-[#008ee7] text-white md:px-[.9vw] md:py-[.3vw] px-2 py-0.5 rounded-md md:text-[1vw] text-[1.5vh] flex items-center gap-1">
+                      <BadgeInfo className="md:size-4 size-3.5" />{post.cate}
                     </span>
                   </h1>
 
-                  <p className="md:text-[1vw] text-[1.6vh] font-light italic text-zinc-400 mt-2 px-3">
+                  <p className="md:text-[1vw] text-[1.6vh] font-light italic text-zinc-300 mt-2 px-3 leading-tight">
                     {post.desc}
                   </p>
 
