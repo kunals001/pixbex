@@ -6,6 +6,7 @@ import ReduxProvider from "@/redux/provider";
 import "./globals.css";
 import Header from "@/components/Navbar/Header";
 import LenisScroll from "@/components/Layouts/SmoothScroll";
+import  CheckAdmin  from "@/components/Layouts/CheckAdmin";
 
 const barlow = Barlow({
   subsets: ['latin'],
@@ -38,11 +39,14 @@ export default function RootLayout({
         className={`${barlow.variable} ${poppins.variable} antialiased`}
         cz-shortcut-listen="true"
       >
+        
         <LenisScroll/>
         <ReduxProvider>
+          <CheckAdmin>
           <Header />
           {children}
           <Toaster position="top-right" />
+          </CheckAdmin>
         </ReduxProvider>
       </body>
     </html>

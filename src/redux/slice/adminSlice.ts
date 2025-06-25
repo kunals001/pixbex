@@ -364,6 +364,7 @@ const adminSlice = createSlice({
       .addCase(checkAdminAuth.fulfilled, (state, action) => {
         state.loading = false;
         state.user = action.payload;
+        state.isAuthenticated = true;
         state.isCheckingAuth = false;
         state.error = null;
       })
