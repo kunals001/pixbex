@@ -245,13 +245,16 @@ export const deleteHireRequest = createAsyncThunk<
   }
 });
 
+
 export const logout = createAsyncThunk<void, void, { rejectValue: string }>(
   "admin/logout",
   async (_, { rejectWithValue }) => {
     try {
-      await axios.get(`${API_URL}/api/auth/logout`);
+      await axios.post(`${API_URL}/api/auth/logout`, null, {
+        withCredentials: true, // Ensure cookies are sent
+      });
     } catch (err) {
-      const error = err as AxiosError<{ message: string }>;
+      const error = err as AxiosError<{ message?: string }>;
       return rejectWithValue(error.response?.data?.message || "Logout failed");
     }
   }
@@ -408,9 +411,10 @@ const adminSlice = createSlice({
         state.loading = false;
         state.error = action.payload || "Failed to delete hire request";
       })
-
-
-
+      .addCase(logout.fulfilled, (state) => {
+        state.user = null;
+        state.isAuthenticated = false;
+      })
 
   },
 });
