@@ -1,6 +1,6 @@
 "use client"
 import dynamic from "next/dynamic";
-const  ProjectShow = dynamic(() => import('@/components/Home/ProjectShow'), { ssr: false });
+import ProjectShow from "@/components/Home/ProjectShow";
 
 const TextAnimation = dynamic(() => import('@/components/Home/ProjectText'), {
   ssr: false,
