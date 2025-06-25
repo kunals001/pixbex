@@ -93,19 +93,6 @@ export const login = createAsyncThunk<
   }
 });
 
-export const checkAdminAuth = createAsyncThunk(
-  'admin/checkAdminAuth',
-  async (_, { rejectWithValue }) => {
-    try {
-      const response = await axios.get(`${API_URL}/api/auth/check-auth`);
-      return response.data.user;
-    } catch (err) {
-      const error = err as AxiosError<{ message: string }>;
-      return rejectWithValue(error.response?.data?.message || "Contact failed");
-    }
-  }
-);
-
 export const contactus = createAsyncThunk<
   Contact,
   { name: string; email: string; message: string; reason: string },
@@ -355,24 +342,6 @@ const adminSlice = createSlice({
       .addCase(updatePost.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload || "Failed to update post";
-      })
-      .addCase(checkAdminAuth.pending, (state) => {
-        state.loading = true;
-        state.isCheckingAuth = true;
-        state.error = null;
-      })
-      .addCase(checkAdminAuth.fulfilled, (state, action) => {
-        state.loading = false;
-        state.user = action.payload;
-        state.isAuthenticated = true;
-        state.isCheckingAuth = false;
-        state.error = null;
-      })
-      .addCase(checkAdminAuth.rejected, (state, action) => {
-        state.loading = false;
-        state.user = null;
-        state.isCheckingAuth = false;
-        state.error = action.payload as string;
       })
       .addCase(sendHireRequest.pending, (state) => {
         state.loading = true;
