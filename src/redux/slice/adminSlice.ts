@@ -245,6 +245,17 @@ export const deleteHireRequest = createAsyncThunk<
   }
 });
 
+export const logout = createAsyncThunk<void, void, { rejectValue: string }>(
+  "admin/logout",
+  async (_, { rejectWithValue }) => {
+    try {
+      await axios.get(`${API_URL}/api/auth/logout`);
+    } catch (err) {
+      const error = err as AxiosError<{ message: string }>;
+      return rejectWithValue(error.response?.data?.message || "Logout failed");
+    }
+  }
+);
 
 
 

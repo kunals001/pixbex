@@ -2,6 +2,9 @@ import React, { useState } from 'react'
 import SideButton from './SideButton'
 import { IconGauge ,IconGaugeFilled,IconLayoutList, IconLayoutListFilled,IconCopyPlus,IconCopyPlusFilled, IconPaperclip} from '@tabler/icons-react';
 
+import { useAppDispatch } from '@/redux/hooks';
+import { logout } from '@/redux/slice/adminSlice';
+
 
 const tabs = [
     { text: "Contacts", href: "/dashboard/?tab=contact",Icon:IconGauge,SelectIcon:IconGaugeFilled },
@@ -13,6 +16,16 @@ const tabs = [
 const Sidebar = () => {
 
     const [selectedTab, setSelectedTab] = useState(tabs[0].href);
+
+    const dispatch = useAppDispatch();
+
+    const handleLogout = async() =>{
+        try {
+            await dispatch(logout()).unwrap();
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
   return (
     <div className="w-[10vw] h-[88vh] bg-zinc-900 sticky top-[5vw] pb-[2vw] rounded-xl overflow-hidden">
@@ -32,6 +45,10 @@ const Sidebar = () => {
                 onClick={() => setSelectedTab(tab.href)}
             />
         ))}
+
+        <button onClick={handleLogout} className="w-full text-[1.2vw] px-[2vw] py-1 text-white hover:bg-zinc-800 cursor-pointer text-start">
+            Logout
+        </button>
     </div>
     </div>
   )
